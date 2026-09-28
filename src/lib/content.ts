@@ -143,12 +143,12 @@ export const eventPartners = [
  * consistent opgehaald); controleer of dit de correcte schrijfwijze is.
  */
 export const locaties = [
-  { naam: "L'esceau", plaats: "Zottegem" },
-  { naam: "De Melkerij", plaats: "Vinderoute (Lovendegem)" },
-  { naam: "Domein Siliginis", plaats: "Sint-Martens-Latem" },
-  { naam: "Prullenbos", plaats: "Wetteren" },
-  { naam: "Publiek Authentiek", plaats: "Deinze / Zulte" },
-  { naam: "Alix - Table & Jardin d'Amis", plaats: "Gent" },
+  { naam: "L'esceau", tekst: "Zottegem", url: "https://lesceau.be/" },
+  { naam: "De Melkerij", tekst: "Vinderoute (Lovendegem)", url: "https://demelkerij.events/" },
+  { naam: "Domein Siliginis", tekst: "Sint-Martens-Latem", url: "https://www.siliginis.be/" },
+  { naam: "Prullenbos", tekst: "Wetteren", url: "https://prullenbos.be/" },
+  { naam: "Publiek Authentiek", tekst: "Deinze / Zulte", url: "https://www.publiekauthentiek.be/" },
+  { naam: "Alix - Table & Jardin d'Amis", tekst: "Gent", url: "https://alix.gent/" },
 ];
 
 /**

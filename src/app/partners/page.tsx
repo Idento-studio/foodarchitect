@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import CategorieHero from "@/components/CategorieHero";
+import LinkKaarten from "@/components/LinkKaarten";
 import SlotCta from "@/components/SlotCta";
 import { eventPartners } from "@/lib/content";
 
@@ -25,14 +26,7 @@ export default function PartnersPagina() {
       />
       <section className="sectie licht">
         <div className="wrap">
-          <ul className="partners">
-            {eventPartners.map((p) => (
-              <li key={p.naam}>
-                <b><a href={p.url} target="_blank" rel="noopener">{p.naam}</a></b>
-                <span>{p.tekst}</span>
-              </li>
-            ))}
-          </ul>
+          <LinkKaarten items={eventPartners} />
         </div>
       </section>
       <SlotCta />

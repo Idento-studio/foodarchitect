@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import CategorieHero from "@/components/CategorieHero";
+import LinkKaarten from "@/components/LinkKaarten";
 import SmaakCheck from "@/components/SmaakCheck";
 import SlotCta from "@/components/SlotCta";
 import { locaties } from "@/lib/content";
@@ -26,14 +27,7 @@ export default function LocatiesPagina() {
       />
       <section className="sectie licht">
         <div className="wrap">
-          <ul className="partners">
-            {locaties.map((l) => (
-              <li key={l.naam}>
-                <b>{l.naam}</b>
-                <span>{l.plaats}</span>
-              </li>
-            ))}
-          </ul>
+          <LinkKaarten items={locaties} />
         </div>
       </section>
       <SmaakCheck />
