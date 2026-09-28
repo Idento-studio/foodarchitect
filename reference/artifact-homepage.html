@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="nl-BE">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Food Architect — Culinaire vormgeving & catering in Vlaanderen</title>
+<meta name="description" content="Catering op maat met lokale producten voor huwelijksfeesten, bedrijfsevenementen en Fire & Smoke BBQ. Chef Kim Vandevoorde, Gent & Deinze.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,500&family=Montserrat:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+/* ============ HUISSTIJL FOOD ARCHITECT (uit de live site) ============ */
+:root{
+  --groen:#06332C; --groen-2:#0B3F37; --groen-3:#04261F;
+  --goud:#B49A5D; --goud-donker:#8A7340;
+  --salie:#DCE7E1; --wit:#FFFFFF; --inkt:#333333;
+  --f-titel:"Playfair Display", Georgia, "Times New Roman", serif;
+  --f-tekst:"Montserrat", "Segoe UI", system-ui, sans-serif;
+  --breed:min(1600px, 100% - 3.5rem);
+  --pill:999px; --r:4px;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --groen:#06332C; } }
+:root[data-theme="dark"]{ --groen:#06332C; }
+
+/* thema's per sectie */
+.donker{--bg:var(--groen);--fg:var(--wit);--zacht:rgba(255,255,255,.78);--lijn:rgba(255,255,255,.16);--kaart:var(--groen-2);--kicker:var(--goud);background:var(--bg);color:var(--fg)}
+.licht{--bg:var(--wit);--fg:var(--inkt);--zacht:#555;--lijn:rgba(6,51,44,.14);--kaart:var(--wit);--kicker:var(--goud-donker);background:var(--bg);color:var(--fg)}
+.salie{--bg:var(--salie);--fg:var(--inkt);--zacht:#4d5752;--lijn:rgba(6,51,44,.16);--kaart:var(--wit);--kicker:var(--goud-donker);background:var(--bg);color:var(--fg)}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--wit);color:var(--inkt);font-family:var(--f-tekst);font-size:1rem;line-height:1.7;overflow-x:hidden}
+img,svg{max-width:100%;display:block}
+a{color:inherit}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+:focus-visible{outline:2px solid var(--goud);outline-offset:3px}
+.wrap{width:var(--breed);margin-inline:auto}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.skip{position:absolute;left:1rem;top:-4rem;background:var(--goud);color:var(--wit);padding:.6rem 1rem;z-index:99}
+.skip:focus{top:1rem}
+
+h1,h2,h3{font-family:var(--f-titel);font-weight:700;line-height:1.12}
+.licht h2,.salie h2{color:var(--inkt)}
+h2{font-size:clamp(2.2rem,4.6vw,3.5rem)}
+h3{font-weight:600}
+.kicker{display:block;font-family:var(--f-tekst);font-size:.78rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--kicker,var(--goud));margin-bottom:1rem}
+.kicker.streep::after{content:"";display:block;width:48px;height:2px;background:var(--goud);margin-top:1.1rem}
+.onder{font-family:var(--f-titel);font-style:italic;font-weight:500;font-size:clamp(1.6rem,2.8vw,2.3rem);line-height:1.2}
+.onder::after{content:"";display:block;width:48px;height:2px;background:var(--goud);margin-top:1.1rem}
+.lead{font-size:1.08rem;max-width:36em;color:var(--zacht)}
+p{color:var(--zacht)}
+
+/* knoppen: pills zoals op de site */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;padding:.9rem 1.9rem;border-radius:var(--pill);text-decoration:none;font-weight:500;font-size:.95rem;transition:background .25s,color .25s,border-color .25s,transform .25s}
+.btn-vol{background:var(--goud);color:var(--wit)}
+.btn-vol:hover{background:var(--goud-donker)}
+.btn-lijn{border:1.5px solid currentColor;color:var(--fg,var(--wit))}
+.donker .btn-lijn:hover{background:var(--wit);color:var(--groen);border-color:var(--wit)}
+.licht .btn-lijn:hover,.salie .btn-lijn:hover{background:var(--groen);color:var(--wit);border-color:var(--groen)}
+
+/* ============ HEADER ============ */
+.kop{position:fixed;inset:0 0 auto;z-index:50;color:var(--wit);background:transparent;transition:background .3s,box-shadow .3s}
+.kop.vast{background:rgba(6,51,44,.96);backdrop-filter:blur(10px);box-shadow:0 8px 30px -18px rgba(0,0,0,.6)}
+.topbalk{font-size:.8rem;color:rgba(255,255,255,.72);border-bottom:1px solid rgba(255,255,255,.12)}
+.topbalk ul{display:flex;gap:1.4rem;justify-content:flex-end;list-style:none;padding:.45rem 0}
+.topbalk a{text-decoration:none}.topbalk a:hover{color:var(--goud)}
+.kop.vast .topbalk{display:none}
+.nav{display:flex;align-items:center;gap:1.5rem;padding:.9rem 0;position:relative}
+.merk{text-decoration:none;display:flex;align-items:center}
+.logo{font-family:var(--f-titel);font-weight:400;font-size:3.1rem;line-height:1;letter-spacing:-.04em;color:var(--wit)}
+.kop.vast .logo{font-size:2.5rem}
+.menu{display:flex;gap:.2rem;list-style:none;align-items:center}
+.menu>li{position:relative}
+.menu>li>a,.menu>li>button{display:flex;align-items:center;gap:.35rem;padding:.6rem .8rem;text-decoration:none;font-size:.92rem;font-weight:500}
+.menu>li>a:hover,.menu>li>button:hover{color:var(--goud)}
+.pijl{width:10px;height:10px;transition:transform .2s}
+.nav>nav{margin-left:auto}
+.menu>li{position:static}
+.mega{position:absolute;top:100%;left:0;right:0;padding-top:.7rem;opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .22s,transform .22s,visibility .22s;z-index:5}
+.mega-kaart{background:var(--wit);color:var(--inkt);border-radius:var(--r);overflow:hidden;display:grid;grid-template-columns:1fr minmax(260px,320px);box-shadow:0 40px 70px -35px rgba(4,38,31,.6)}
+.mega-links{padding:1.8rem;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.2rem 1rem;align-content:start}
+.mega-vuur .mega-links{grid-template-columns:repeat(2,minmax(0,1fr))}
+.mega-kop,.mega-intro{grid-column:1/-1}
+.mega-kop{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--goud-donker);margin-bottom:.6rem}
+.mega-intro{font-size:.9rem;color:#555;max-width:52em;margin-bottom:.8rem}
+.mega .item{display:grid;grid-template-columns:2.4rem 1fr;align-items:start;gap:.2rem;padding:.75rem .9rem;border-radius:var(--r);text-decoration:none;transition:background .18s}
+.item-icoon{width:24px;height:24px;color:var(--goud-donker);margin-top:.15rem}
+.mega .item:hover .item-icoon{color:var(--groen)}
+.mega .item b{display:block;font-family:var(--f-titel);font-weight:600;font-size:1.08rem;color:var(--groen);line-height:1.25}
+.mega .item span{display:block;font-size:.82rem;color:#666;margin-top:.15rem}
+.mega .item:hover,.mega .item:focus-visible{background:var(--salie)}
+.mega-alles{grid-column:1/-1;margin:.9rem .9rem 0;padding-top:.9rem;border-top:1px solid var(--lijn);font-size:.86rem;font-weight:500;color:var(--goud-donker);text-decoration:none}
+.mega-alles:hover{color:var(--groen)}
+.mega-cta{background:var(--groen-3);color:var(--wit);padding:1.8rem;display:flex;flex-direction:column;justify-content:center;gap:.7rem;align-items:flex-start}
+.mega-cta-kop{font-family:var(--f-titel);font-weight:600;font-size:1.35rem;color:var(--wit);line-height:1.2}
+.mega-cta p{font-size:.86rem;color:rgba(255,255,255,.78)}
+.mega-cta .btn{margin-top:.4rem;padding:.75rem 1.4rem;font-size:.88rem}
+.menu>li.open .mega{opacity:1;visibility:visible;transform:none}
+.menu>li.open>button{color:var(--goud)}
+.menu>li.open .pijl{transform:rotate(180deg)}
+.burger{display:none;width:44px;height:44px;align-items:center;justify-content:center}
+.burger span,.burger span::before,.burger span::after{display:block;width:26px;height:2px;background:currentColor;position:relative;transition:.25s}
+.burger span::before,.burger span::after{content:"";position:absolute;left:0}
+.burger span::before{top:-8px}.burger span::after{top:8px}
+.menu-open .burger span{background:transparent}
+.menu-open .burger span::before{top:0;transform:rotate(45deg)}
+.menu-open .burger span::after{top:0;transform:rotate(-45deg)}
+.lade{display:none}
+@media (max-width:1180px){.mega-kaart{grid-template-columns:1fr}.mega-cta{flex-direction:row;align-items:center;gap:1.2rem;padding:1.2rem 1.8rem}.mega-cta-kop{font-size:1.15rem;flex:0 0 auto}.mega-cta p{flex:1;min-width:12rem}.mega-cta .btn{margin-top:0;margin-left:auto;flex:0 0 auto}}
+@media (max-width:980px){
+  .menu,.nav .btn,.topbalk{display:none}
+  .burger{display:flex}
+  .lade{display:block;position:fixed;inset:0;background:var(--groen);color:var(--wit);z-index:49;padding:6.5rem 1.25rem 2rem;overflow-y:auto;transform:translateX(100%);transition:transform .35s ease;visibility:hidden}
+  .menu-open .lade{transform:none;visibility:visible}
+  .lade details{border-bottom:1px solid rgba(255,255,255,.14)}
+  .lade summary,.lade>a:not(.btn){display:flex;justify-content:space-between;align-items:center;padding:1rem 0;font-family:var(--f-titel);font-weight:600;font-size:1.6rem;list-style:none;text-decoration:none;cursor:pointer}
+  .lade>a:not(.btn){border-bottom:1px solid rgba(255,255,255,.14)}
+  .lade summary::-webkit-details-marker{display:none}
+  .lade details[open] .pijl{transform:rotate(180deg)}
+  .lade details a{display:block;padding:.5rem 0 .5rem 1rem;color:rgba(255,255,255,.78);text-decoration:none}
+  .lade details div{padding-bottom:1rem}
+  .lade .klein{display:flex;flex-wrap:wrap;gap:.4rem 1.2rem;margin:1.6rem 0;font-size:.92rem;color:rgba(255,255,255,.72)}
+  .lade .klein a{text-decoration:none}
+  .lade .btn{width:100%}
+}
+
+/* ============ HERO ============ */
+.hero{min-height:100svh;display:grid;align-items:center;padding:10.5rem 0 4.5rem;position:relative;overflow:hidden;background:radial-gradient(ellipse at 75% 40%,#0E4a40 0%,var(--groen) 55%,var(--groen-3) 100%)}
+.hero-grid{position:relative;max-width:min(58%,760px)}
+.hero h1{font-size:clamp(2.6rem,5.6vw,4.6rem);margin-bottom:1.6rem;color:var(--wit)}
+.hero .lead{margin-bottom:2.2rem;color:rgba(255,255,255,.86)}
+.knoppen{display:flex;flex-wrap:wrap;gap:.8rem}
+.hero-feiten{display:flex;flex-wrap:wrap;gap:1.8rem;margin-top:3rem;padding-top:1.6rem;border-top:1px solid var(--lijn);font-size:.88rem;color:var(--zacht)}
+.hero-feiten strong{display:block;color:var(--wit);font-weight:600}
+.plan-hero{color:var(--wit);position:relative}
+.plan-hero figcaption{color:var(--zacht);text-align:center;margin-top:.6rem;font-style:italic;font-family:var(--f-titel);font-size:1.05rem}
+.raster{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.07) 1px,transparent 1px);background-size:48px 48px;mask-image:radial-gradient(ellipse at 78% 50%,#000 12%,transparent 68%);-webkit-mask-image:radial-gradient(ellipse at 78% 50%,#000 12%,transparent 68%);pointer-events:none}
+.teken{stroke-dasharray:1;stroke-dashoffset:1;animation:teken 2.2s cubic-bezier(.6,.1,.2,1) forwards}
+.label-in{opacity:0;animation:in .8s ease forwards}
+@keyframes teken{to{stroke-dashoffset:0}}
+@keyframes in{to{opacity:1}}
+@media (max-width:1100px){.hero-grid{max-width:min(72%,640px)}}
+@media (max-width:860px){.hero{padding-top:7.5rem}.hero-grid{max-width:100%}}
+
+/* ============ SECTIES ============ */
+.sectie{padding:clamp(4.5rem,10vw,8rem) 0}
+.kop-rij{display:flex;justify-content:space-between;align-items:end;gap:2rem;flex-wrap:wrap;margin-bottom:3rem}
+.kop-rij h2{max-width:14em}
+
+/* filosofie */
+.filo:has(.filo-media[hidden]){grid-template-columns:minmax(0,800px)}
+.filo{display:grid;grid-template-columns:1.25fr .75fr;gap:clamp(2rem,6vw,6rem);align-items:center}
+.filo .onder{margin:1.8rem 0 1.6rem;color:var(--inkt)}
+.filo p+p{margin-top:1rem}
+.chef{display:flex;align-items:center;gap:1rem;margin-top:2rem;padding-top:1.4rem;border-top:1px solid var(--lijn)}
+.chef-foto{width:64px;height:64px;border-radius:50%;background:var(--groen);color:var(--goud);display:grid;place-items:center;font-family:var(--f-titel);font-size:1.4rem;flex:none}
+.chef b{display:block;font-weight:600;color:var(--inkt)}
+.chef span{font-size:.9rem;font-style:italic;color:var(--zacht)}
+.beloftes{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:clamp(3rem,6vw,4.5rem);background:var(--salie);border-radius:var(--r)}
+.beloftes li{padding:clamp(1.6rem,3vw,2.4rem);border-left:1px solid rgba(6,51,44,.12)}
+.beloftes li:first-child{border-left:0}
+.beloftes svg{width:30px;height:30px;color:var(--goud-donker);margin-bottom:1rem}
+.beloftes b{display:block;font-family:var(--f-titel);font-weight:600;font-size:1.3rem;color:var(--groen);margin-bottom:.4rem;line-height:1.2}
+.beloftes p{font-size:.95rem}
+@media (max-width:980px){.beloftes{grid-template-columns:1fr}.beloftes li{border-left:0;border-top:1px solid rgba(6,51,44,.12);padding:1.5rem}.beloftes li:first-child{border-top:0}}
+@media (max-width:860px){.filo{grid-template-columns:1fr}}
+
+/* keuken */
+
+
+
+/* ============ FOTOBAND ============ */
+.keuken{padding-bottom:clamp(3rem,7vw,5rem);overflow:hidden}
+.keuken .wrap{margin-bottom:2.5rem}
+.band{position:relative;width:100vw;margin-left:calc(50% - 50vw);overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent);mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent)}
+.spoor{display:flex;gap:1rem;width:max-content;animation:schuif 70s linear infinite;will-change:transform}
+.band:hover .spoor,.band.pauze .spoor{animation-play-state:paused}
+.foto{flex:none;width:clamp(260px,27vw,440px);aspect-ratio:4/5;border-radius:var(--r);overflow:hidden;background:var(--groen-2);margin:0}
+.foto img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.foto:hover img{transform:scale(1.04)}
+@keyframes schuif{from{transform:translateX(0)}to{transform:translateX(calc(-50% - .5rem))}}
+.band-pauze{position:absolute;right:1.25rem;bottom:1rem;background:rgba(4,38,31,.75);backdrop-filter:blur(6px);color:var(--wit);padding:.45rem 1rem;border-radius:var(--pill);font-size:.78rem;opacity:0;transition:opacity .25s}
+.band:hover .band-pauze,.band-pauze:focus-visible,.band.pauze .band-pauze{opacity:1}
+@media (max-width:620px){.foto{width:74vw}.spoor{animation-duration:55s;gap:.7rem}}
+@media (prefers-reduced-motion:reduce){
+  .spoor{animation:none;overflow-x:auto}
+  .band{overflow-x:auto;scroll-snap-type:x mandatory}
+  .foto{scroll-snap-align:center}
+}
+
+/* diensten: drie banden, afwisselend links en rechts */
+.diensten{display:grid;gap:clamp(1rem,2.5vw,2rem);padding-bottom:clamp(2rem,6vw,5rem)}
+.dienst{position:sticky;top:calc(6rem + env(safe-area-inset-top,0px));box-shadow:0 -18px 40px -24px rgba(0,0,0,.65);display:grid;grid-template-columns:clamp(300px,36vw,560px) 1fr;gap:clamp(1.5rem,3.5vw,3rem);align-items:center;background:var(--groen-2);border-radius:var(--r);overflow:hidden;min-height:clamp(340px,40vw,600px)}
+.dienst:nth-child(2){top:calc(7.5rem + env(safe-area-inset-top,0px))}
+.dienst:nth-child(3){top:calc(9rem + env(safe-area-inset-top,0px))}
+.dienst:nth-child(even){grid-template-columns:1fr clamp(300px,36vw,560px)}
+.dienst:nth-child(even) .beeld{order:2}
+.dienst.vuur{background:var(--groen-3)}
+.dienst .beeld{align-self:stretch;background:var(--groen-3) center/cover no-repeat;position:relative}
+.dienst:not(.met-foto) .beeld{background:linear-gradient(160deg,var(--groen-2),var(--groen-3))}
+.dienst .tekst{padding:2.2rem 2.4rem 2.2rem 0}
+.dienst:nth-child(even) .tekst{padding:2.2rem 0 2.2rem 2.4rem}
+.dienst .kicker{color:var(--goud);margin-bottom:.7rem}
+.dienst h3{font-size:clamp(1.7rem,2.6vw,2.4rem);line-height:1.12}
+.dienst .tag{color:var(--goud);font-size:.95rem;margin-top:.35rem}
+.dienst .tekst>p:not(.tag){color:rgba(255,255,255,.78);font-size:.96rem;margin:1rem 0;max-width:44em}
+.dienst ul{list-style:none;display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.4rem}
+.dienst ul a{display:block;border:1px solid rgba(255,255,255,.28);padding:.4rem .9rem;border-radius:var(--pill);font-size:.85rem;text-decoration:none}
+.dienst ul a:hover{background:var(--wit);color:var(--groen);border-color:var(--wit)}
+.dienst .lees{display:inline-flex;align-items:center;gap:.5rem;color:var(--goud);font-size:.92rem;font-weight:500;text-decoration:none;padding-bottom:.15rem;border-bottom:1px solid rgba(180,154,93,.45);transition:color .2s,border-color .2s}
+.dienst .lees::after{content:"→";transition:transform .2s}
+.dienst .lees:hover{color:var(--wit);border-color:var(--wit)}
+.dienst .lees:hover::after{transform:translateX(3px)}
+@media (max-width:760px){
+  .dienst,.dienst:nth-child(even),.dienst:nth-child(2),.dienst:nth-child(3){position:static;top:auto;grid-template-columns:1fr;min-height:0;gap:0;box-shadow:none}
+  .dienst .beeld,.dienst:nth-child(even) .beeld{order:0;aspect-ratio:4/5}
+  .dienst .tekst,.dienst:nth-child(even) .tekst{padding:1.6rem}
+}
+
+/* traject */
+.traject{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);border-top:2px solid var(--salie)}
+.traject li{padding:1.6rem 1.6rem 0 0;position:relative}
+.traject li::before{content:"";position:absolute;top:-6px;left:0;width:10px;height:10px;background:var(--goud);border-radius:50%}
+.traject .nr{font-family:var(--f-titel);font-style:italic;font-size:2.6rem;color:var(--goud);line-height:1}
+.traject h3{font-size:1.4rem;margin:.6rem 0 .4rem;color:var(--groen)}
+.traject p{font-size:.93rem}
+@media (max-width:860px){.traject{grid-template-columns:1fr 1fr;row-gap:2.2rem}}
+@media (max-width:520px){.traject{grid-template-columns:1fr;border-top:0;border-left:2px solid var(--salie);padding-left:1.4rem}.traject li{padding:0}.traject li::before{left:calc(-1.4rem - 6px);top:.9rem}}
+
+/* lokaal + review */
+.lokaal{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,6vw,5rem);align-items:center}
+.lokaal-beeld{position:relative;aspect-ratio:4/5;max-width:520px;width:100%;justify-self:center;border-radius:var(--r);overflow:hidden}
+.lokaal-beeld img{width:100%;height:100%;object-fit:cover}
+.partners{list-style:none;margin-top:2rem;display:grid;gap:.9rem}
+.partners li{display:flex;flex-wrap:wrap;gap:.2rem 1rem;align-items:baseline;border-bottom:1px solid var(--lijn);padding-bottom:.9rem}
+.partners b{font-family:var(--f-titel);font-size:1.3rem;font-weight:600;min-width:10rem;color:var(--groen)}
+.partners span{color:var(--zacht);font-size:.93rem}
+.review{margin-top:clamp(4rem,8vw,6.5rem);background:var(--groen);color:var(--wit);border-radius:var(--r);padding:clamp(2rem,5vw,4rem);display:grid;grid-template-columns:auto 1fr;gap:1.5rem 3rem}
+.review .aanh{font-family:var(--f-titel);font-size:7rem;line-height:.7;color:var(--goud)}
+.review blockquote{font-family:var(--f-titel);font-style:italic;font-weight:500;font-size:clamp(1.6rem,3.2vw,2.6rem);line-height:1.22;max-width:20em}
+.review footer{margin-top:1.4rem;display:flex;flex-wrap:wrap;gap:1.4rem;align-items:center;color:rgba(255,255,255,.78);font-size:.93rem}
+.review footer a{color:var(--goud)}
+@media (max-width:860px){.lokaal{grid-template-columns:1fr}.review{grid-template-columns:1fr;gap:.6rem}.review .aanh{font-size:4.5rem}}
+
+/* smaak-check */
+.check{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(2rem,6vw,5rem);align-items:start}
+.check a{color:var(--groen);font-weight:500}
+.paneel{background:var(--wit);border:1px solid var(--lijn);border-radius:var(--r);padding:clamp(1.3rem,3vw,2.2rem);color:var(--inkt);box-shadow:0 30px 60px -40px rgba(6,51,44,.5)}
+.voortgang{display:flex;gap:6px;margin-bottom:1.6rem}
+.voortgang i{flex:1;height:3px;background:var(--salie);border-radius:2px;transition:background .3s}
+.voortgang i.aan{background:var(--goud)}
+.stap{border:0}
+.stap legend{font-family:var(--f-titel);font-weight:700;font-size:1.7rem;margin-bottom:1.2rem;line-height:1.2;color:var(--groen)}
+.stap[hidden]{display:none}
+.anders{margin-top:1rem}
+.anders[hidden]{display:none}
+.anders label{display:block;font-size:.85rem;color:#666;margin-bottom:.4rem}
+.anders input{width:100%;padding:.85rem 1rem;border:1px solid var(--lijn);border-radius:var(--r);font:inherit;font-size:.95rem;color:var(--inkt);background:var(--wit)}
+.anders input:focus{outline:2px solid var(--goud);outline-offset:1px;border-color:var(--groen)}
+.opties{display:grid;grid-template-columns:repeat(2,1fr);gap:.6rem}
+.optie input{position:absolute;opacity:0}
+.optie span{display:block;padding:.85rem 1rem;border:1px solid var(--lijn);border-radius:var(--r);cursor:pointer;transition:.2s;font-size:.93rem;height:100%}
+.optie span:hover{border-color:var(--groen)}
+.optie span small{display:block;color:#666;font-size:.8rem;margin-top:.15rem}
+.optie input:checked+span{border-color:var(--groen);background:var(--groen);color:var(--wit)}
+.optie input:checked+span small{color:rgba(255,255,255,.75)}
+.optie input:focus-visible+span{outline:2px solid var(--goud);outline-offset:2px}
+.gasten-getal{font-family:var(--f-titel);font-weight:700;font-size:4rem;line-height:1;color:var(--groen)}
+.gasten-getal small{font-family:var(--f-tekst);font-weight:400;font-size:1rem;color:#666;margin-left:.4rem}
+input[type=range]{width:100%;margin:1.4rem 0 .4rem;accent-color:var(--goud);height:28px}
+.schaal{display:flex;justify-content:space-between;font-size:.8rem;color:#666}
+.stap-nav{display:flex;justify-content:space-between;align-items:center;margin-top:1.8rem;gap:1rem}
+.stap-nav .btn-vol:disabled{opacity:.4;cursor:not-allowed}
+.terug{font-size:.9rem;text-decoration:underline;text-underline-offset:3px;color:#666}
+.resultaat h3{color:var(--groen)}
+.resultaat dl{display:grid;grid-template-columns:auto 1fr;gap:.5rem 1.2rem;margin:1rem 0 1.4rem;font-size:.95rem}
+.resultaat dt{color:#666}
+.resultaat dd{font-weight:500}
+.resultaat .advies{background:var(--salie);padding:1rem 1.2rem;border-radius:var(--r);font-size:.93rem;margin-bottom:1.4rem;color:var(--inkt)}
+.resultaat .btn-lijn{color:var(--groen)}
+@media (max-width:860px){.check{grid-template-columns:1fr}}
+@media (max-width:420px){.opties{grid-template-columns:1fr}}
+
+
+/* ============ BEELDEN ============ */
+.hero.met-foto{background:var(--groen-3)}
+.hero-foto{position:absolute;inset:0;overflow:hidden}
+.hero-foto img{width:100%;height:100%;object-fit:cover}
+.hero-foto::after{content:"";position:absolute;inset:0;background:linear-gradient(96deg,rgba(4,38,31,.94) 0%,rgba(5,45,38,.86) 30%,rgba(6,51,44,.58) 52%,rgba(6,51,44,.28) 72%,rgba(6,51,44,.14) 100%)}
+@media (max-width:860px){.hero-foto::after{background:linear-gradient(180deg,rgba(4,38,31,.55) 0%,rgba(5,45,38,.86) 45%,rgba(6,51,44,.93) 100%)}}
+.filo-media{position:relative;align-self:center;border-radius:var(--r);overflow:hidden;aspect-ratio:3/4;max-height:70vh;background:var(--groen)}
+.filo-media video,.filo-poster img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.filo-poster{position:absolute;inset:0;display:none}
+.filo-media.geen-video .filo-poster:not([hidden]){display:block}
+.filo-media.geen-video .geluid{display:none}
+.speel{position:absolute;inset:0;margin:auto;width:76px;height:76px;border-radius:50%;background:rgba(4,38,31,.72);backdrop-filter:blur(6px);color:var(--wit);display:grid;place-items:center;transition:background .2s,transform .2s}
+.speel:hover{background:rgba(4,38,31,.92);transform:scale(1.05)}
+.speel[hidden]{display:none}
+.geluid{position:absolute;right:1rem;bottom:1rem;display:inline-flex;align-items:center;gap:.5rem;background:rgba(4,38,31,.75);backdrop-filter:blur(6px);color:var(--wit);padding:.55rem 1.1rem;border-radius:var(--pill);font-size:.82rem;transition:background .2s}
+.geluid:hover{background:rgba(4,38,31,.95)}
+
+/* beeldbeheer (enkel zichtbaar voor wie de artifact mag bewerken) */
+.beheer-knop{position:fixed;left:1rem;bottom:1rem;z-index:45;background:var(--wit);color:var(--groen);padding:.7rem 1.2rem;border-radius:var(--pill);font-size:.85rem;font-weight:500;box-shadow:0 10px 30px -12px rgba(0,0,0,.5);display:none;align-items:center;gap:.5rem}
+.beheer-knop.aan{display:inline-flex}
+.beheer{position:fixed;top:0;right:0;bottom:0;width:min(420px,100%);background:var(--wit);color:var(--inkt);z-index:60;transform:translateX(100%);transition:transform .35s;box-shadow:-20px 0 50px -30px rgba(0,0,0,.6);display:flex;flex-direction:column}
+.beheer.open{transform:none}
+.beheer header{display:flex;justify-content:space-between;align-items:center;padding:1.2rem 1.3rem;border-bottom:1px solid var(--lijn)}
+.beheer h2{font-size:1.4rem;color:var(--groen)}
+.beheer .uitleg{padding:1rem 1.3rem;font-size:.85rem;color:#666;border-bottom:1px solid var(--lijn)}
+.beheer .lijst{overflow-y:auto;padding:.6rem 1.3rem 2rem;display:grid;gap:.6rem}
+.b-slot{display:grid;grid-template-columns:72px 1fr auto;grid-template-areas:none;gap:.8rem;align-items:center;border:1px dashed var(--lijn);border-radius:var(--r);padding:.6rem;transition:border-color .2s,background .2s}
+.b-slot.sleep{border-color:var(--goud);background:#faf7f0}
+.b-slot .mini{width:72px;height:54px;border-radius:2px;background:var(--salie);object-fit:cover;display:block}
+.b-slot b{display:block;font-size:.88rem;font-weight:500}
+.b-slot small{color:#777;font-size:.75rem}
+.b-slot .acties{display:flex;gap:.3rem}
+.b-slot .acties button{border:1px solid var(--lijn);border-radius:var(--pill);padding:.35rem .8rem;font-size:.75rem}
+.b-slot .acties button:hover{border-color:var(--groen)}
+.b-slot .punten{grid-column:1/-1;display:flex;align-items:center;gap:.3rem;font-size:.73rem;color:#777;padding-top:.2rem}
+.b-slot .punten button{border:1px solid var(--lijn);border-radius:var(--pill);padding:.2rem .6rem;font-size:.72rem}
+.b-slot .punten button.aan{background:var(--groen);color:var(--wit);border-color:var(--groen)}
+.beheer .status{padding:.8rem 1.3rem;font-size:.8rem;color:#666;border-top:1px solid var(--lijn)}
+
+/* slot + footer */
+.slot{text-align:center;position:relative;overflow:hidden}
+.slot .wrap{position:relative}
+.cta-foto{position:absolute;inset:0}
+.cta-foto[hidden]{display:none}
+.cta-foto img{width:100%;height:100%;object-fit:cover}
+.cta-foto::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,38,31,.88),rgba(4,38,31,.78))}
+.slot .kicker.streep::after{margin-inline:auto}
+.slot h2{font-size:clamp(2.4rem,6vw,4.4rem);max-width:12em;margin:0 auto 1.2rem}
+.slot .lead{margin:0 auto 2.2rem}
+.slot .knoppen{justify-content:center}
+.voet{background:var(--groen-3);color:rgba(255,255,255,.75);padding:4.5rem 0 2rem;font-size:.9rem}
+.voet p{color:rgba(255,255,255,.75)}
+.voet-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:2.5rem}
+.voet h4{font-family:var(--f-tekst);font-weight:500;font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;color:var(--goud);margin-bottom:1rem}
+.voet ul{list-style:none;display:grid;gap:.35rem}
+.voet a{text-decoration:none}.voet a:hover{color:var(--goud)}
+.voet .logo{font-size:3.4rem;margin-bottom:.8rem;display:block}
+.voet-onder{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem;margin-top:3rem;padding-top:1.4rem;border-top:1px solid rgba(255,255,255,.12);font-size:.82rem}
+.voet-onder ul{display:flex;gap:1.2rem}
+@media (max-width:860px){.voet-grid{grid-template-columns:1fr 1fr}.voet-grid>div:first-child{grid-column:1/-1}}
+
+.sticky-cta{display:none}
+@media (max-width:620px){
+  .sticky-cta{display:flex;position:fixed;left:.75rem;right:.75rem;bottom:.75rem;z-index:40;transform:translateY(160%);transition:transform .35s;box-shadow:0 10px 30px rgba(0,0,0,.3)}
+  .sticky-cta.toon{transform:none}
+  .voet{padding-bottom:5.5rem}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-delay:0ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+  .teken{stroke-dashoffset:0}.label-in{opacity:1}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#inhoud">Ga naar de inhoud</a>
+
+<!-- ============ HEADER ============ -->
+<header class="kop donker" id="kop">
+  <div class="topbalk"><div class="wrap"><ul>
+    <li><a href="https://foodarchitect.idento.be/reviews/">Reviews</a></li>
+    <li><a href="https://foodarchitect.idento.be/referenties/">Referenties</a></li>
+    <li><a href="https://foodarchitect.idento.be/locaties/">Locaties</a></li>
+    <li><a href="https://foodarchitect.idento.be/partners/">Partners</a></li>
+    <li><a href="https://foodarchitect.idento.be/faq/">FAQ</a></li>
+    <li><a href="https://foodarchitect.idento.be/contact/">Contact</a></li>
+  </ul></div></div>
+  <div class="wrap nav">
+    <a class="merk" href="#" aria-label="Food Architect, naar home"><span class="logo" aria-hidden="true">fa</span>
+    </a>
+    <nav aria-label="Hoofdmenu">
+      <ul class="menu">
+        <li class="heeft-sub">
+          <button aria-expanded="false" aria-controls="sub-1">Private catering <svg class="pijl" viewBox="0 0 10 10" fill="none" stroke="currentColor"><path d="M1 3l4 4 4-4"/></svg></button>
+          <div class="mega" id="sub-1">
+            <div class="mega-kaart">
+              <div class="mega-links">
+                <p class="mega-kop">Feesten in familiekring</p>
+                <a class="item" href="https://foodarchitect.idento.be/private-catering/huwelijksfeesten/"><svg class="item-icoon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="9" cy="14.5" r="5"/><circle cx="15" cy="14.5" r="5"/><path d="M12 4.5l1.6 2.4h-3.2z"/></svg><span class="item-tekst"><b>Huwelijksfeesten</b><span>Van receptie tot dessertbuffet, één chef voor de hele dag</span></span></a><a class="item" href="https://foodarchitect.idento.be/private-catering/verjaardagen-jubilea/"><svg class="item-icoon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M4 20h16v-6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2z"/><path d="M8 12V8M12 12V7M16 12V8"/><path d="M8 5.5c0-1 1-1.5 0-2.5M12 4.5c0-1 1-1.5 0-2.5M16 5.5c0-1 1-1.5 0-2.5"/></svg><span class="item-tekst"><b>Verjaardagen &amp; jubilea</b><span>Een menu rond de gast van eer, thuis of op locatie</span></span></a><a class="item" href="https://foodarchitect.idento.be/private-catering/communie-lentefeesten/"><svg class="item-icoon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M12 21V11"/><path d="M12 11c0-4 3-6 7-6 0 4-3 6-7 6zM12 13c0-3-2.5-5-6-5 0 3 2.5 5 6 5z"/></svg><span class="item-tekst"><b>Communie- &amp; lentefeesten</b><span>Eén tafel voor groot en klein, zonder aparte kinderkaart</span></span></a><a class="item" href="https://foodarchitect.idento.be/fire-smoke-bbq/"><svg class="item-icoon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M12 21c-5 0-7.5-3.5-5.8-7.6C7.3 10.6 10 9.6 9.4 6 12 7.6 14 10.6 13.5 13c1.3-.9 1.8-2.2 1.8-3.4 2.6 2.6 3.9 5 2.9 7.6-.8 2.2-2.5 3.8-6.2 3.8z"/></svg><span class="item-tekst"><b>Fire &amp; Smoke BBQ</b><span>Showcooking op het vuur, ook bij een privéfeest</span></span></a>
+                <a class="mega-alles" href="https://foodarchitect.idento.be/private-catering/">Alle private catering</a>
+              </div>
+              <div class="mega-cta">
+                <p class="mega-cta-kop">Nog geen idee van de formule?</p>
+                <p>Vertel ons wat u viert, met hoeveel u bent en hoe u wil serveren. U krijgt meteen een eerste schets.</p>
+                <a class="btn btn-vol" href="#smaakcheck">Doe de smaak-check</a>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="heeft-sub">
+          <button aria-expanded="false" aria-controls="sub-2">Event catering <svg class="pijl" viewBox="0 0 10 10" fill="none" stroke="currentColor"><path d="M1 3l4 4 4-4"/></svg></button>
+          <div class="mega" id="sub-2">
+            <div class="mega-kaart">
+              <div class="mega-links">
+                <p class="mega-kop">Catering voor bedrijven</p>
+                <a class="item" href="https://foodarchitect.idento.be/event-catering/bedrijsevenementen/"><svg class="item-icoon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M4 21V5.5L13 3v18"/><path d="M13 9h7v12"/><path d="M7 8h3M7 12h3M7 16h3M16 13h1M16 17h1"/></svg><span class="item-tekst"><b>Bedrijfsevenementen</b><span>Van klantenreceptie tot jubileum van de zaak</span></span></a><a class="item" href="https://foodarchitect.idento.be/event-catering/personeelsfeesten/"><svg class="item-icoon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M5 3h6l-1 6a2 2 0 0 1-4 0zM8 9v9M6 21h4"/><path d="M14 4h6l-1 6a2 2 0 0 1-4 0zM17 10v8M15 21h4"/></svg><span class="item-tekst"><b>Personeelsfeesten</b><span>Eten waar uw team over blijft praten</span></span></a><a class="item" href="https://foodarchitect.idento.be/event-catering/seminaries/"><svg class="item-icoon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M4 9h12v6a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4z"/><path d="M16 11h2.5a2.5 2.5 0 0 1 0 5H16"/><path d="M8 6c0-1 .8-1.5 0-3M12 6c0-1 .8-1.5 0-3"/></svg><span class="item-tekst"><b>Seminaries</b><span>Ontbijt, lunch en pauzes die het programma niet vertragen</span></span></a><a class="item" href="https://foodarchitect.idento.be/event-catering/productlanceringen/"><svg class="item-icoon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M12 3c3 2.5 4.5 6 4.5 9.5L12 17l-4.5-4.5C7.5 9 9 5.5 12 3z"/><circle cx="12" cy="10" r="1.6"/><path d="M9 17.5 7 21l3.5-1.5M15 17.5 17 21l-3.5-1.5"/></svg><span class="item-tekst"><b>Productlanceringen</b><span>Hapjes die het verhaal van uw merk meevertellen</span></span></a>
+                <a class="mega-alles" href="https://foodarchitect.idento.be/event-catering/">Alle event catering</a>
+              </div>
+              <div class="mega-cta">
+                <p class="mega-cta-kop">Snel een richting bepalen?</p>
+                <p>Walking dinner, aan tafel of van het vuur. Drie vragen en u weet welke formule bij uw event past.</p>
+                <a class="btn btn-vol" href="#smaakcheck">Doe de smaak-check</a>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="heeft-sub">
+          <button aria-expanded="false" aria-controls="sub-3">Fire &amp; Smoke BBQ <svg class="pijl" viewBox="0 0 10 10" fill="none" stroke="currentColor"><path d="M1 3l4 4 4-4"/></svg></button>
+          <div class="mega mega-vuur" id="sub-3">
+            <div class="mega-kaart">
+              <div class="mega-links">
+                <p class="mega-kop">Onze specialiteit</p>
+                <p class="mega-intro">Fire &amp; Smoke is geen apart bedrijf, maar onze eigen manier van koken op open vuur en in de rook. Chef Kim staat bij uw gasten aan de grill. Het werkt even goed op een feest thuis als op een bedrijfsterrein.</p>
+                <a class="item" href="https://foodarchitect.idento.be/fire-smoke-bbq/"><svg class="item-icoon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3.5 11 12 4l8.5 7"/><path d="M6 10.5V20h12v-9.5"/><path d="M10 20v-5h4v5"/></svg><span class="item-tekst"><b>Bij een privéfeest</b><span>Trouw, verjaardag of tuinfeest, met de grill als middelpunt van de avond</span></span></a>
+                <a class="item" href="https://foodarchitect.idento.be/fire-smoke-bbq/"><svg class="item-icoon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M4 21V5.5L13 3v18"/><path d="M13 9h7v12"/><path d="M7 8h3M7 12h3M7 16h3"/></svg><span class="item-tekst"><b>Bij een bedrijfsevent</b><span>Personeelsfeest of klantendag, showcooking waar uw gasten bij staan</span></span></a>
+                <a class="mega-alles" href="https://foodarchitect.idento.be/fire-smoke-bbq/">Alles over Fire &amp; Smoke BBQ</a>
+              </div>
+              <div class="mega-cta">
+                <p class="mega-cta-kop">Past het bij uw feest?</p>
+                <p>Drie vragen en u weet of het vuur past bij uw gezelschap en uw locatie.</p>
+                <a class="btn btn-vol" href="#smaakcheck">Doe de smaak-check</a>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li><a href="https://foodarchitect.idento.be/over-food-architect/">Over</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn-vol" href="#smaakcheck">Offerte aanvragen</a>
+    <button class="burger" id="burger" aria-expanded="false" aria-controls="lade" aria-label="Menu openen"><span></span></button>
+  </div>
+</header>
+
+<div class="lade" id="lade" aria-label="Mobiel menu">
+  <details><summary>Private catering <svg class="pijl" viewBox="0 0 10 10" fill="none" stroke="currentColor"><path d="M1 3l4 4 4-4"/></svg></summary><div>
+    <a href="https://foodarchitect.idento.be/private-catering/huwelijksfeesten/">Huwelijksfeesten</a>
+    <a href="https://foodarchitect.idento.be/private-catering/verjaardagen-jubilea/">Verjaardagen & jubilea</a>
+    <a href="https://foodarchitect.idento.be/private-catering/communie-lentefeesten/">Communie- & lentefeesten</a></div></details>
+  <details><summary>Event catering <svg class="pijl" viewBox="0 0 10 10" fill="none" stroke="currentColor"><path d="M1 3l4 4 4-4"/></svg></summary><div>
+    <a href="https://foodarchitect.idento.be/event-catering/bedrijsevenementen/">Bedrijfsevenementen</a>
+    <a href="https://foodarchitect.idento.be/event-catering/personeelsfeesten/">Personeelsfeesten</a>
+    <a href="https://foodarchitect.idento.be/event-catering/seminaries/">Seminaries</a>
+    <a href="https://foodarchitect.idento.be/event-catering/productlanceringen/">Productlanceringen</a></div></details>
+  <details><summary>Fire &amp; Smoke BBQ <svg class="pijl" viewBox="0 0 10 10" fill="none" stroke="currentColor"><path d="M1 3l4 4 4-4"/></svg></summary><div>
+    <a href="https://foodarchitect.idento.be/fire-smoke-bbq/">Bij een privéfeest</a>
+    <a href="https://foodarchitect.idento.be/fire-smoke-bbq/">Bij een bedrijfsevent</a>
+    <a href="https://foodarchitect.idento.be/fire-smoke-bbq/">Alles over Fire &amp; Smoke</a></div></details>
+  <a href="https://foodarchitect.idento.be/over-food-architect/">Over</a>
+  <div class="klein">
+    <a href="https://foodarchitect.idento.be/reviews/">Reviews</a><a href="https://foodarchitect.idento.be/referenties/">Referenties</a><a href="https://foodarchitect.idento.be/locaties/">Locaties</a><a href="https://foodarchitect.idento.be/partners/">Partners</a><a href="https://foodarchitect.idento.be/faq/">FAQ</a><a href="https://foodarchitect.idento.be/contact/">Contact</a>
+  </div>
+  <a class="btn btn-vol" href="#smaakcheck" data-sluit>Offerte aanvragen</a>
+</div>
+
+<main id="inhoud">
+<!-- ============ HERO ============ -->
+<section class="hero donker" id="hero">
+  <div class="hero-foto" id="slot-hero" hidden></div>
+  <div class="raster" aria-hidden="true"></div>
+  <div class="wrap">
+   <div class="hero-grid">
+      <span class="kicker streep">Culinaire architectuur</span>
+      <h1>Food Architect: Culinaire Vormgeving &amp; Catering in Vlaanderen</h1>
+      <p class="lead">Wij serveren geen maaltijden. Wij creëren herinneringen.<br>Feeding Memories door vakmanschap en passie.</p>
+      <div class="knoppen">
+        <a class="btn btn-vol" href="#keuken">Ontdek Onze Smaakwereld</a>
+        <a class="btn btn-lijn" href="https://foodarchitect.idento.be/impressies/">Portfolio</a>
+      </div>
+      <div class="hero-feiten">
+        <div><strong>Chef Kim Vandevoorde</strong>Oprichter en ontwerper van elk menu</div>
+        <div><strong>Gent & Deinze</strong>Catering in heel Vlaanderen</div>
+        <div><strong>Totaalservice</strong>Van amuse tot digestief</div>
+      </div>
+   </div>
+  </div>
+</section>
+
+<!-- ============ FILOSOFIE ============ -->
+<section class="sectie licht" id="filosofie">
+  <div class="wrap">
+   <div class="filo">
+    <div>
+      <span class="kicker">Onze filosofie</span>
+      <h2>Feeding Memories: De Architectuur van Smaak</h2>
+      <p class="onder">Elk evenement is een unieke constructie.</p>
+      <p>Chef Kim Vandevoorde bouwt menu's zoals een architect een gebouw ontwerpt: met precisie, maatwerk en de beste lokale fundamenten. Wij ontzorgen u volledig, van de eerste amuse tot de laatste digestief.</p>
+      <p>Catering op maat met lokale producten en een totaalservice die geen detail vergeet.</p>
+      <div class="chef">
+        <div class="chef-foto" aria-hidden="true">KV</div>
+        <div><b>Chef Kim Vandevoorde</b><span>Oprichter</span></div>
+      </div>
+    </div>
+    <figure class="filo-media" id="filoMedia">
+      <video id="filoVideo" autoplay muted loop playsinline preload="auto" poster="data:image/jpeg;base64,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" aria-label="Sfeerbeeld van een event van Food Architect">
+        <source src="/video/event.mp4" type="video/mp4">
+      </video>
+      <div class="filo-poster" id="slot-filosofie" hidden></div>
+      <button type="button" class="speel" id="speelKnop" hidden aria-label="Video afspelen">
+        <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg>
+      </button>
+      <button type="button" class="geluid" id="geluidKnop" aria-pressed="false">
+        <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path class="uit" d="M16 9.5l4.5 5M20.5 9.5l-4.5 5"/><path class="aan" d="M15.8 9.2a4 4 0 0 1 0 5.6M18.4 7a7.5 7.5 0 0 1 0 10" style="display:none"/></svg>
+        <span>Geluid aan</span>
+      </button>
+    </figure>
+   </div>
+    <ul class="beloftes">
+      <li><svg viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="3" y="3" width="20" height="20"/><path d="M3 9h20M9 3v20"/></svg><div><b>Menu op maat, geen standaardformule</b><p>Elk voorstel vertrekt van uw gasten, uw locatie en het verhaal dat u wil vertellen.</p></div></li>
+      <li><svg viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M13 23V11M13 11c0-5 4-8 9-8 0 5-4 8-9 8zM13 15c0-4-3-6-8-6 0 4 3 6 8 6z"/></svg><div><b>Lokale fundamenten</b><p>We koken met producten van ambachtelijke makers uit de regio.</p></div></li>
+      <li><svg viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="13" cy="13" r="10"/><path d="M8 13.5l3.5 3.5L18 10"/></svg><div><b>Een totaalservice die geen detail vergeet</b><p>Bediening, materiaal en timing: u hoeft enkel te genieten.</p></div></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ UIT DE KEUKEN ============ -->
+<section class="sectie keuken donker" id="keuken">
+  <div class="wrap">
+    <span class="kicker streep">Uit de keuken</span>
+    <h2>Zo ziet het eruit op het bord</h2>
+  </div>
+  <div class="band" id="band" aria-label="Foto's van gerechten en hapjes">
+    <div class="spoor" id="spoor">
+      <figure class="foto"><img src="/images/band-01.webp" alt="Dessert met rode gelei, crumble en een quenelle room" width="900" height="1125"></figure>
+      <figure class="foto"><img src="/images/band-02.webp" alt="Kroketjes met toef op een schaal maïskorrels, doorgegeven op een receptie" width="900" height="1125"></figure>
+      <figure class="foto"><img src="/images/band-03.webp" alt="Chef schept jus over gevogelte in een diep bord" width="900" height="1125"></figure>
+      <figure class="foto"><img src="/images/band-04.webp" alt="Hapjes van gebrande tonijn met zeewier, afgewerkt met een spuitzak" width="900" height="1125"></figure>
+      <figure class="foto"><img src="/images/band-05.webp" alt="Tonijnhapjes op een houten plank, geserveerd tussen de gasten" loading="lazy" width="900" height="1125"></figure>
+      <figure class="foto"><img src="/images/band-06.webp" alt="Hapjes met mousse, radijs en tomaat op een krokant plaatje" loading="lazy" width="900" height="1125"></figure>
+      <figure class="foto"><img src="/images/band-07.webp" alt="Gegrilde babymaïs met kaas en bieslook op een bananenblad" loading="lazy" width="900" height="1125"></figure>
+      <figure class="foto"><img src="/images/band-08.webp" alt="Blokjes paté op krokant, geserveerd van een houten plank" loading="lazy" width="900" height="1125"></figure>
+      <figure class="foto"><img src="/images/band-09.webp" alt="Gasten nemen kroketjes met munt uit een kom" loading="lazy" width="900" height="1125"></figure>
+      <figure class="foto"><img src="/images/band-10.webp" alt="Bloemkool met wortel, krieltje en erwtenscheuten in een diep bord" loading="lazy" width="900" height="1125"></figure>
+      <figure class="foto"><img src="/images/band-11.webp" alt="Chef giet kruidenolie over gemarineerde zalm met microgroenten" loading="lazy" width="900" height="1125"></figure>
+      <figure class="foto"><img src="/images/band-12.webp" alt="Gast snijdt een stuk varkenshaas met jus en gekarameliseerde wortel" loading="lazy" width="900" height="1125"></figure>
+    </div>
+    <button type="button" class="band-pauze" id="bandPauze" aria-pressed="false">Pauzeer</button>
+  </div>
+</section>
+
+<!-- ============ PIJLERS ============ -->
+<section class="sectie donker" id="diensten">
+  <div class="wrap">
+    <div class="kop-rij">
+      <div><span class="kicker">Onze diensten</span><h2>Drie Pijlers van Smaak</h2></div>
+      <p class="lead">Elk evenement verdient een culinair concept op maat.</p>
+    </div>
+    <div class="diensten">
+      <article class="dienst" data-slot="pijler-private">
+        <span class="beeld" aria-hidden="true"></span>
+        <div class="tekst">
+          <span class="kicker">01 · Private</span>
+          <h3>Private Catering &amp; Trouwfeesten</h3>
+          <p class="tag">Jullie droomdag, culinair vertaald.</p>
+          <p>Van een intiem diner aan huis tot een trouwfeest voor honderden gasten. We ontwerpen samen het menu dat bij jullie past.</p>
+          <ul>
+            <li><a href="https://foodarchitect.idento.be/private-catering/huwelijksfeesten/">Huwelijksfeesten</a></li>
+            <li><a href="https://foodarchitect.idento.be/private-catering/verjaardagen-jubilea/">Verjaardagen &amp; jubilea</a></li>
+            <li><a href="https://foodarchitect.idento.be/private-catering/communie-lentefeesten/">Communie- &amp; lentefeesten</a></li>
+          </ul>
+          <a class="lees" href="https://foodarchitect.idento.be/private-catering/">Meer over private catering</a>
+        </div>
+      </article>
+      <article class="dienst" data-slot="pijler-event">
+        <span class="beeld" aria-hidden="true"></span>
+        <div class="tekst">
+          <span class="kicker">02 · Event</span>
+          <h3>Event Catering voor Bedrijven</h3>
+          <p class="tag">Hospitality die uw merk versterkt.</p>
+          <p>Walking dinners, seminaries en lanceringen waar het eten mee het verhaal van uw bedrijf vertelt.</p>
+          <ul>
+            <li><a href="https://foodarchitect.idento.be/event-catering/bedrijsevenementen/">Bedrijfsevenementen</a></li>
+            <li><a href="https://foodarchitect.idento.be/event-catering/personeelsfeesten/">Personeelsfeesten</a></li>
+            <li><a href="https://foodarchitect.idento.be/event-catering/seminaries/">Seminaries</a></li>
+            <li><a href="https://foodarchitect.idento.be/event-catering/productlanceringen/">Productlanceringen</a></li>
+          </ul>
+          <a class="lees" href="https://foodarchitect.idento.be/event-catering/">Meer over event catering</a>
+        </div>
+      </article>
+      <article class="dienst vuur" data-slot="pijler-bbq">
+        <span class="beeld" aria-hidden="true"></span>
+        <div class="tekst">
+          <span class="kicker">03 · Fire &amp; Smoke</span>
+          <h3>Fire &amp; Smoke BBQ</h3>
+          <p class="tag">Authentieke showcooking met een twist.</p>
+          <p>Vlammen, rook en een chef die voor uw gasten grilt. Een eerlijke, stoere beleving, zowel op een privéfeest als op een bedrijfsevent.</p>
+          <ul>
+            <li><a href="https://foodarchitect.idento.be/fire-smoke-bbq/">Bij een privéfeest</a></li>
+            <li><a href="https://foodarchitect.idento.be/fire-smoke-bbq/">Bij een bedrijfsevent</a></li>
+          </ul>
+          <a class="lees" href="https://foodarchitect.idento.be/fire-smoke-bbq/">Ontdek Fire &amp; Smoke</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TRAJECT ============ -->
+<section class="sectie licht">
+  <div class="wrap">
+    <div class="kop-rij"><div><span class="kicker">Zo werken we</span><h2>Van schets tot servies</h2></div></div>
+    <ol class="traject">
+      <li><span class="nr">1</span><h3>Kennismaking</h3><p>We luisteren naar uw plannen: gasten, locatie, sfeer en wensen.</p></li>
+      <li><span class="nr">2</span><h3>Het ontwerp</h3><p>Chef Kim tekent een menu op maat, met lokale producten van het seizoen.</p></li>
+      <li><span class="nr">3</span><h3>De afwerking</h3><p>We stemmen timing, bediening en materiaal tot in detail met u af.</p></li>
+      <li><span class="nr">4</span><h3>De dag zelf</h3><p>Wij koken en serveren, u geniet samen met uw gasten.</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ LOKAAL + REVIEW ============ -->
+<section class="sectie salie" id="lokaal">
+  <div class="wrap">
+    <div class="lokaal">
+      <div>
+        <span class="kicker">Lokaal verankerd</span>
+        <h2>Geworteld in regio Vlaanderen</h2>
+        <p class="lead" style="margin-top:1.2rem">Wij werken samen met lokale helden. Vers, eerlijk en onvergetelijk.</p>
+        <ul class="partners">
+          <li><b>Monsieur Boudin</b><span>Ambachtelijke witte pensen</span></li>
+          <li><b>De wijnhandel om de hoek</b><span>De beste wijnen bij elk gerecht</span></li>
+          <li><b>Boeren uit de streek</b><span>Groenten en vlees van het seizoen</span></li>
+        </ul>
+        <a class="btn btn-lijn" style="margin-top:2rem;color:var(--groen)" href="https://foodarchitect.idento.be/partners/">Ontmoet onze partners</a>
+      </div>
+      <figure class="lokaal-beeld" id="slot-lokaal">
+        <img src="/images/lokaal-zalm.webp" alt="Chef werkt een bord gemarineerde zalm af met kruidenolie" loading="lazy" width="1080" height="1350">
+      </figure>
+    </div>
+    <figure class="review">
+      <div class="aanh" aria-hidden="true">“</div>
+      <div>
+        <blockquote>Alles liep beter dan we in gedachten hadden. Een absolute meerwaarde voor ons feest.</blockquote>
+        <footer><span>Sarah & Thomas, huwelijksfeest in Gent</span><a href="https://foodarchitect.idento.be/reviews/">Bekijk alle klantervaringen</a></footer>
+      </div>
+    </figure>
+  </div>
+</section>
+
+<!-- ============ SMAAK-CHECK ============ -->
+<section class="sectie licht" id="smaakcheck">
+  <div class="wrap check">
+    <div>
+      <span class="kicker">De volgende stap</span>
+      <h2>Klaar om uw gasten te verrassen?</h2>
+      <p class="lead" style="margin-top:1.2rem">Doe de smaak-check in drie vragen. U krijgt meteen een eerste schets van uw formule en kan die rechtstreeks meesturen met uw offerteaanvraag.</p>
+      <p style="margin-top:1.4rem;font-size:.95rem">Liever meteen praten? Mail naar <a href="mailto:info@foodarchitect.be">info@foodarchitect.be</a>.</p>
+    </div>
+    <form class="paneel" id="check" novalidate>
+      <div class="voortgang" aria-hidden="true"><i class="aan"></i><i></i><i></i><i></i></div>
+      <p class="sr" aria-live="polite" id="stapStatus">Vraag 1 van 3</p>
+
+      <fieldset class="stap" data-stap="1">
+        <legend>Wat vieren we?</legend>
+        <div class="opties" id="opt-gelegenheid"></div>
+        <div class="anders" id="anders" hidden>
+          <label for="anderTekst">Wat vieren jullie?</label>
+          <input type="text" id="anderTekst" name="anderTekst" maxlength="80" autocomplete="off" placeholder="Bijvoorbeeld: doopfeest, opendeurdag, pensioenviering">
+        </div>
+      </fieldset>
+
+      <fieldset class="stap" data-stap="2" hidden>
+        <legend>Hoeveel gasten verwacht u?</legend>
+        <div class="gasten-getal"><output id="gastenOut" for="gasten">80</output><small>gasten</small></div>
+        <label class="sr" for="gasten">Aantal gasten</label>
+        <input type="range" id="gasten" name="gasten" min="10" max="400" step="10" value="80">
+        <div class="schaal"><span>10</span><span>200</span><span>400+</span></div>
+      </fieldset>
+
+      <fieldset class="stap" data-stap="3" hidden>
+        <legend>Hoe wil u serveren?</legend>
+        <div class="opties" id="opt-stijl"></div>
+      </fieldset>
+
+      <div class="stap resultaat" data-stap="4" hidden>
+        <p class="kicker">Uw eerste schets</p>
+        <h3 style="font-size:2rem" id="resTitel"></h3>
+        <dl id="resLijst"></dl>
+        <p class="advies" id="resAdvies"></p>
+        <div class="knoppen">
+          <a class="btn btn-vol" id="resLink" href="https://foodarchitect.idento.be/offerte-aanvragen/">Vraag offerte aan met deze schets</a>
+          <button type="button" class="btn btn-lijn" id="opnieuw">Opnieuw</button>
+        </div>
+      </div>
+
+      <div class="stap-nav" id="stapNav">
+        <button type="button" class="terug" id="terug" hidden>Vorige vraag</button>
+        <span></span>
+        <button type="button" class="btn btn-vol" id="verder" disabled>Volgende</button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<section class="sectie slot donker" id="slot">
+  <div class="cta-foto" id="slot-cta" hidden></div>
+  <div class="wrap">
+    <span class="kicker streep">Feeding memories</span>
+    <h2>Laten we samen uw menu ontwerpen</h2>
+    <p class="lead">Vrijblijvend, persoonlijk en op maat van uw feest.</p>
+    <div class="knoppen">
+      <a class="btn btn-vol" href="https://foodarchitect.idento.be/offerte-aanvragen/">Vraag offerte aan</a>
+      <a class="btn btn-lijn" href="#smaakcheck">Doe de smaak-check</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="voet donker">
+  <div class="wrap">
+    <div class="voet-grid">
+      <div>
+        <span class="logo" aria-label="Food Architect">fa</span>
+        <p>Culinaire architectuur voor jullie mooiste dag.<br>Gevestigd in Gent & Deinze.</p>
+      </div>
+      <div><h4>Wat we doen</h4><ul>
+        <li><a href="https://foodarchitect.idento.be/private-catering/huwelijksfeesten/">Huwelijksfeesten</a></li>
+        <li><a href="https://foodarchitect.idento.be/private-catering/communie-lentefeesten/">Communie- & lentefeesten</a></li>
+        <li><a href="https://foodarchitect.idento.be/private-catering/verjaardagen-jubilea/">Verjaardagen & jubilea</a></li>
+        <li><a href="https://foodarchitect.idento.be/event-catering/bedrijsevenementen/">Bedrijfsevenementen</a></li>
+        <li><a href="https://foodarchitect.idento.be/event-catering/personeelsfeesten/">Personeelsfeesten</a></li>
+        <li><a href="https://foodarchitect.idento.be/event-catering/productlanceringen/">Productlanceringen</a></li>
+        <li><a href="https://foodarchitect.idento.be/event-catering/seminaries/">Seminaries</a></li>
+        <li><a href="https://foodarchitect.idento.be/fire-smoke-bbq/">Fire & Smoke BBQ</a></li>
+      </ul></div>
+      <div><h4>Navigatie</h4><ul>
+        <li><a href="https://foodarchitect.idento.be/over-food-architect/">Over Food Architect</a></li>
+        <li><a href="https://foodarchitect.idento.be/reviews/">Reviews</a></li>
+        <li><a href="https://foodarchitect.idento.be/referenties/">Referenties</a></li>
+        <li><a href="https://foodarchitect.idento.be/locaties/">Locaties</a></li>
+        <li><a href="https://foodarchitect.idento.be/partners/">Partners</a></li>
+        <li><a href="https://foodarchitect.idento.be/faq/">FAQ</a></li>
+        <li><a href="https://foodarchitect.idento.be/contact/">Contact</a></li>
+      </ul></div>
+      <div><h4>Contact</h4><ul>
+        <li><a href="mailto:info@foodarchitect.be">info@foodarchitect.be</a></li>
+        <li><a href="tel:+3291234567">+32 9 123 45 67</a></li>
+        <li>Gent & Deinze, België</li>
+        <li style="margin-top:.6rem"><a href="#">Instagram</a></li>
+        <li><a href="#">Pinterest</a></li>
+      </ul></div>
+    </div>
+    <div class="voet-onder">
+      <span>© <span id="jaar">2026</span> Food Architect. Alle rechten voorbehouden.</span>
+      <ul><li><a href="#">Privacybeleid</a></li><li><a href="#">Cookiebeleid</a></li><li><a href="#">Algemene voorwaarden</a></li></ul>
+    </div>
+  </div>
+</footer>
+
+
+<button class="beheer-knop" id="beheerKnop" aria-controls="beheer" aria-expanded="false">Beeldbeheer</button>
+<aside class="beheer" id="beheer" aria-label="Beeldbeheer" inert>
+  <header><h2>Beeldbeheer</h2><button id="beheerSluit" aria-label="Sluiten">&times;</button></header>
+  <p class="uitleg">Sleep een foto op een plek, of klik op Kies. De foto wordt automatisch verkleind naar WebP en bewaard in deze pagina, zichtbaar voor iedereen met de link.</p>
+  <div class="lijst" id="slotLijst"></div>
+  <p class="status" id="beheerStatus">Klaar.</p>
+</aside>
+<a class="btn btn-vol sticky-cta" id="stickyCta" href="#smaakcheck">Doe de smaak-check</a>
+
+<script>
+(() => {
+/* ================= DATA — vul hier echte foto's in (img: 'https://...webp') ================= */
+const FORMULES = [
+  { id:'tafel', naam:'Aan tafel' },
+  { id:'walking', naam:'Walking dinner' },
+  { id:'vuur', naam:'Fire & Smoke' }
+];
+const GERECHTEN = [
+  { formule:'tafel', naam:'Noordzeegarnaal', sub:'Tomaat, dashi & zeekraal', img:'',
+    tekst:'Handgepelde grijze garnalen met een heldere tomatendashi. Fris, zilt en licht als opener van een feestmenu.',
+    delen:[{l:'Grijze garnaal',t:'hoop',a:200,d:30,s:34},{l:'Tomatendashi',t:'veeg',a:20,d:10,s:70},{l:'Zeekraal',t:'blad',a:300,d:62,s:12},{l:'Dilleolie',t:'punten',a:120,d:70,s:5}]},
+  { formule:'tafel', naam:'Mechelse koekoek', sub:'Jonge prei, dragonjus', img:'',
+    tekst:'Rug van Mechelse koekoek met krokante huid, zacht gegaarde prei en een diepe jus met verse dragon.',
+    delen:[{l:'Rug van koekoek',t:'plak',a:210,d:20,s:40},{l:'Jonge prei',t:'plak',a:30,d:50,s:22},{l:'Dragonjus',t:'veeg',a:120,d:40,s:60},{l:'Krokante huid',t:'punten',a:320,d:66,s:4}]},
+  { formule:'tafel', naam:'Chocolade & hazelnoot', sub:'Ganache, praliné, zeezout', img:'',
+    tekst:'Een dessert in lagen: zijdezachte ganache, krokante praliné en een vleugje zeezout om af te sluiten.',
+    delen:[{l:'Ganache',t:'hoop',a:180,d:14,s:30},{l:'Hazelnootpraliné',t:'punten',a:40,d:60,s:6},{l:'Cacaotuile',t:'blad',a:280,d:46,s:26},{l:'Zeezout',t:'punten',a:120,d:52,s:3}]},
+  { formule:'walking', naam:'Witte pens van Monsieur Boudin', sub:'Gestoofde appel, mosterdjus', img:'',
+    tekst:'Een Vlaamse klassieker in walking-dinnerformaat, met de ambachtelijke witte pens van onze lokale partner.',
+    delen:[{l:'Witte pens',t:'plak',a:200,d:18,s:38},{l:'Gestoofde appel',t:'hoop',a:40,d:48,s:18},{l:'Mosterdjus',t:'veeg',a:120,d:50,s:44},{l:'Veldsla',t:'blad',a:310,d:64,s:12}]},
+  { formule:'walking', naam:'Gebrande zalm', sub:'Biet, mierikswortel, zuring', img:'',
+    tekst:'Licht gebrande zalm met gelakte biet, een frisse crème van mierikswortel en blaadjes zuring.',
+    delen:[{l:'Gebrande zalm',t:'plak',a:220,d:22,s:36},{l:'Gelakte biet',t:'hoop',a:60,d:54,s:16},{l:'Mierikswortel',t:'punten',a:130,d:58,s:7},{l:'Zuring',t:'blad',a:330,d:60,s:14}]},
+  { formule:'walking', naam:'Seizoensgroenten', sub:'Geroosterde wortel, hazelnoot, yoghurt', img:'',
+    tekst:'Een groentegerecht dat de hoofdrol verdient: geroosterde wortel, gebrande hazelnoot en een frisse yoghurt.',
+    delen:[{l:'Geroosterde wortel',t:'plak',a:190,d:26,s:34},{l:'Yoghurt',t:'veeg',a:40,d:30,s:58},{l:'Hazelnoot',t:'punten',a:300,d:58,s:6},{l:'Kervel',t:'blad',a:120,d:66,s:11}]},
+  { formule:'vuur', naam:'Pluma ibérico', sub:'Chimichurri, gerookte ui', img:'',
+    tekst:'Van de grill voor de ogen van uw gasten: sappige pluma ibérico met een pittige chimichurri en ui uit de rook.',
+    delen:[{l:'Pluma van de grill',t:'plak',a:200,d:18,s:42},{l:'Chimichurri',t:'punten',a:40,d:56,s:6},{l:'Gerookte ui',t:'hoop',a:120,d:60,s:15},{l:'Gegrilde spitskool',t:'blad',a:310,d:60,s:20}]},
+  { formule:'vuur', naam:'Picanha uit de rook', sub:'Beenmergboter, krieltjes', img:'',
+    tekst:'Traag gegaarde picanha, afgewerkt boven het vuur en geserveerd met beenmergboter en gerookte krieltjes.',
+    delen:[{l:'Picanha',t:'plak',a:210,d:20,s:44},{l:'Beenmergboter',t:'hoop',a:40,d:44,s:14},{l:'Gerookte krieltjes',t:'punten',a:120,d:62,s:9},{l:'Jus van het vuur',t:'veeg',a:320,d:40,s:50}]},
+  { formule:'vuur', naam:'Ananas van het vuur', sub:'Rum, vanille, limoen', img:'',
+    tekst:'Gekarameliseerde ananas van de grill, geblust met rum en afgewerkt met vanille en limoenzeste.',
+    delen:[{l:'Gegrilde ananas',t:'plak',a:200,d:16,s:38},{l:'Vanilleroom',t:'veeg',a:40,d:40,s:56},{l:'Limoenzeste',t:'punten',a:120,d:60,s:4},{l:'Munt',t:'blad',a:310,d:62,s:12}]}
+];
+
+let MEDIA={}, assets=null, db=null, doc=null;
+const bron = id => MEDIA[id] ? '/_blob/'+MEDIA[id] : '';
+const punt = id => MEDIA[id+'_punt'] || 'center';   // boven / center / onder in het beeld
+
+
+
+/* ================= FOTOBAND ================= */
+(()=>{
+  const band=document.getElementById('band'), spoor=document.getElementById('spoor'), kn=document.getElementById('bandPauze');
+  if(!band||!spoor) return;
+  spoor.innerHTML += spoor.innerHTML;                    // tweede reeks voor een naadloze lus
+  spoor.querySelectorAll(':scope > *:nth-child(n+13)').forEach(f=>{
+    f.setAttribute('aria-hidden','true');
+    const i=f.querySelector('img'); if(i){ i.alt=''; i.loading='lazy'; }
+  });
+  kn.addEventListener('click',()=>{
+    const aan=band.classList.toggle('pauze');
+    kn.setAttribute('aria-pressed',String(aan));
+    kn.textContent = aan ? 'Speel af' : 'Pauzeer';
+  });
+})();
+
+
+/* ================= HEADER ================= */
+const kop=document.getElementById('kop'), sticky=document.getElementById('stickyCta'), check=document.getElementById('smaakcheck');
+const scroll=()=>{ kop.classList.toggle('vast',scrollY>40);
+  const r=check.getBoundingClientRect(); sticky.classList.toggle('toon', scrollY>innerHeight*.8 && (r.top>innerHeight||r.bottom<0)); };
+addEventListener('scroll',scroll,{passive:true}); scroll();
+
+const subs=[...document.querySelectorAll('.heeft-sub')];
+subs.forEach(li=>{
+  const b=li.querySelector('button');
+  const zet=on=>{
+    if(on) subs.forEach(a=>{ if(a!==li){a.classList.remove('open'); a.querySelector('button').setAttribute('aria-expanded',false);} });
+    li.classList.toggle('open',on); b.setAttribute('aria-expanded',on);
+  };
+  li.addEventListener('mouseenter',()=>zet(true)); li.addEventListener('mouseleave',()=>zet(false));
+  b.addEventListener('click',()=>zet(!li.classList.contains('open')));
+  li.addEventListener('focusout',e=>{ if(!li.contains(e.relatedTarget)) zet(false); });
+  li.addEventListener('keydown',e=>{ if(e.key==='Escape'){zet(false);b.focus();} });
+  li.querySelectorAll('.mega a').forEach(a=>a.addEventListener('click',()=>zet(false)));
+});
+const burger=document.getElementById('burger');
+const lade=on=>{document.body.classList.toggle('menu-open',on); burger.setAttribute('aria-expanded',on); burger.setAttribute('aria-label',on?'Menu sluiten':'Menu openen'); document.body.style.overflow=on?'hidden':'';};
+burger.onclick=()=>lade(!document.body.classList.contains('menu-open'));
+document.querySelectorAll('#lade a').forEach(a=>a.addEventListener('click',()=>lade(false)));
+addEventListener('keydown',e=>{ if(e.key==='Escape') lade(false); });
+
+/* ================= SMAAK-CHECK ================= */
+const GELEGENHEDEN=[
+  {v:'huwelijk',l:'Huwelijksfeest',k:'private-catering/huwelijksfeesten',f:'tafel'},
+  {v:'verjaardag',l:'Verjaardag of jubileum',k:'private-catering/verjaardagen-jubilea',f:'tafel'},
+  {v:'communie',l:'Communie- of lentefeest',k:'private-catering/communie-lentefeesten',f:'walking'},
+  {v:'bedrijf',l:'Bedrijfsevenement',k:'event-catering/bedrijsevenementen',f:'walking'},
+  {v:'personeel',l:'Personeelsfeest',k:'event-catering/personeelsfeesten',f:'vuur'},
+  {v:'seminarie',l:'Seminarie of lancering',k:'event-catering/seminaries',f:'walking'},
+  {v:'ander',l:'Iets anders',s:'Vertel het ons in één regel',k:'contact',f:'walking'}
+];
+const STIJLEN=[
+  {v:'tafel',l:'Aan tafel geserveerd',s:'Meerdere gangen, rustig tempo'},
+  {v:'walking',l:'Walking dinner',s:'Kleine gerechten, veel beweging'},
+  {v:'vuur',l:'Fire & Smoke BBQ',s:'Showcooking op het vuur'},
+  {v:'twijfel',l:'Ik twijfel nog',s:'We denken graag mee'}
+];
+const radios=(el,naam,lijst)=>{ document.getElementById(el).innerHTML=lijst.map(o=>`<label class="optie"><input type="radio" name="${naam}" value="${o.v}"><span>${o.l}${o.s?`<small>${o.s}</small>`:''}</span></label>`).join(''); };
+radios('opt-gelegenheid','gelegenheid',GELEGENHEDEN); radios('opt-stijl','stijl',STIJLEN);
+
+const form=document.getElementById('check'), stappen=[...form.querySelectorAll('[data-stap]')], balk=[...form.querySelectorAll('.voortgang i')];
+const verder=document.getElementById('verder'), terug=document.getElementById('terug'), nav=document.getElementById('stapNav'), gasten=document.getElementById('gasten'), out=document.getElementById('gastenOut');
+let stap=1;
+const anders=document.getElementById('anders'), anderTekst=document.getElementById('anderTekst');
+const isAnder=()=>form.gelegenheid.value==='ander';
+const geldig=()=> stap===1 ? (!!form.gelegenheid.value && (!isAnder() || anderTekst.value.trim().length>1))
+                : stap===3 ? !!form.stijl.value : true;
+function toon(n){
+  stap=n; stappen.forEach(s=>s.hidden=+s.dataset.stap!==n);
+  balk.forEach((b,i)=>b.classList.toggle('aan',i<n));
+  terug.hidden=n===1||n===4; nav.hidden=n===4;
+  verder.textContent=n===3?'Toon mijn schets':'Volgende'; verder.disabled=!geldig();
+  document.getElementById('stapStatus').textContent = n<4?`Vraag ${n} van 3`:'Uw schets is klaar';
+  if(n===4) resultaat();
+}
+form.addEventListener('change',e=>{
+  if(e.target.name==='gelegenheid'){
+    anders.hidden=!isAnder();
+    if(isAnder()) setTimeout(()=>anderTekst.focus(),60);
+  }
+  verder.disabled=!geldig();
+  if(e.target.type==='radio' && stap!==2 && !(stap===1 && isAnder())) setTimeout(()=>{ if(geldig()) toon(stap+1); },220);
+});
+anderTekst.addEventListener('input',()=>{ verder.disabled=!geldig(); });
+anderTekst.addEventListener('keydown',e=>{ if(e.key==='Enter'){ e.preventDefault(); if(geldig()) toon(2); } });
+gasten.addEventListener('input',()=>{ out.value = +gasten.value>=400?'400+':gasten.value; });
+verder.onclick=()=>{ if(geldig()) toon(stap+1); };
+terug.onclick=()=>toon(stap-1);
+document.getElementById('opnieuw').onclick=()=>{ form.reset(); out.value=80; anders.hidden=true; toon(1); };
+
+function resultaat(){
+  const g=GELEGENHEDEN.find(x=>x.v===form.gelegenheid.value), s=STIJLEN.find(x=>x.v===form.stijl.value), n=+gasten.value;
+  const eigen=isAnder() ? anderTekst.value.trim() : '';
+  const naam = eigen || g.l;
+  const fId = s.v==='twijfel' ? g.f : s.v, f=FORMULES.find(x=>x.id===fId);
+  const aanrader = GERECHTEN.filter(x=>x.formule===fId).slice(0,2).map(x=>x.naam).join(' en ');
+  const schaal = n<=30?'een intiem gezelschap, ideaal voor een verfijnd menu met veel aandacht voor elk bord'
+               : n<=120?'een mooi gezelschap waarbij we tempo en bediening nauwkeurig op elkaar afstemmen'
+               : 'een groot evenement waarbij we logistiek en timing mee uittekenen';
+  document.getElementById('resTitel').textContent = `${naam} met ${f.naam.toLowerCase()}`;
+  document.getElementById('resLijst').innerHTML = `<dt>Gelegenheid</dt><dd>${naam}</dd><dt>Gasten</dt><dd>${n>=400?'400+':n}</dd><dt>Formule</dt><dd>${s.v==='twijfel'?f.naam+' (ons voorstel)':s.l}</dd>`;
+  document.getElementById('resAdvies').textContent = `Met ${n>=400?'400+':n} gasten is dit ${schaal}. Denk bijvoorbeeld aan ${aanrader}. Chef Kim werkt het menu verder op maat uit.`;
+  const q=new URLSearchParams({gelegenheid:g.v,gasten:n,formule:fId}); if(eigen) q.set('omschrijving',eigen);
+  document.getElementById('resLink').href=`https://foodarchitect.idento.be/offerte-aanvragen/?${q}`;
+}
+toon(1);
+
+/* ================= BEELDEN: assets + db ================= */
+const SLOTS=[
+  {id:'hero',naam:'Hero, achtergrond',hint:'Liggend, sfeerbeeld van een event',max:1920},
+  {id:'lokaal',naam:'Lokaal verankerd, beeld',hint:'Staand bordbeeld of chef aan het werk, 4:5',max:1200},
+  {id:'cta',naam:'Slot-CTA, achtergrond',hint:'Liggend sfeerbeeld, wordt donker overlegd',max:1920},
+  {id:'filosofie',naam:'Filosofie, posterbeeld',hint:'Valt terug op dit beeld als de video niet laadt',max:1200},
+  {id:'pijler-private',naam:'Dienst 01: private catering',hint:'Staand beeld, trouw of feest',max:1200},
+  {id:'pijler-event',naam:'Dienst 02: event catering',hint:'Staand beeld, bedrijfsevent of walking dinner',max:1200},
+  {id:'pijler-bbq',naam:'Dienst 03: Fire & Smoke',hint:'Staand beeld, vuur of chef aan de grill',max:1200}
+];
+
+function toonBeelden(){
+  const h=document.getElementById('slot-hero'), hb=bron('hero');
+  h.hidden=!hb; document.getElementById('hero').classList.toggle('met-foto',!!hb);
+  h.innerHTML = hb ? `<img src="${hb}" alt="" fetchpriority="high" style="object-position:center ${punt('hero')}">` : '';
+
+  const f=document.getElementById('slot-filosofie'), fb=bron('filosofie');
+  f.hidden=!fb; f.innerHTML = fb ? `<img src="${fb}" alt="Sfeerbeeld van een event van Food Architect" loading="lazy">` : '';
+  const v=document.getElementById('filoVideo'); if(v&&fb) v.poster=fb;
+
+  const lb=bron('lokaal'), li=document.querySelector('#slot-lokaal img');
+  if(li && lb){ li.src=lb; li.style.objectPosition=`center ${punt('lokaal')}`; }
+
+  const c=document.getElementById('slot-cta'), cb=bron('cta');
+  c.hidden=!cb; c.innerHTML = cb ? `<img src="${cb}" alt="" loading="lazy" style="object-position:center ${punt('cta')}">` : '';
+
+  document.querySelectorAll('.dienst[data-slot]').forEach(p=>{
+    const b=bron(p.dataset.slot), laag=p.querySelector('.beeld');
+    p.classList.toggle('met-foto',!!b);
+    if(laag){ laag.style.backgroundImage = b ? `url("${b}")` : ''; laag.style.backgroundPosition = `center ${punt(p.dataset.slot)}`; }
+  });
+}
+
+async function startBeelden(){
+  try{
+    db = await claude.use('db');
+    if(db){
+      doc = db.doc('data/media');
+      const snap = await doc.get();
+      MEDIA = (snap.exists && snap.data().slots) || {};
+      toonBeelden();
+      doc.onSnapshot(s=>{ MEDIA=(s.exists && s.data().slots)||{}; toonBeelden(); }, ()=>{});
+    }
+    assets = await claude.use('assets');
+    if(assets && db) bouwBeheer();
+  }catch(e){}
+}
+if (window.claude && claude.use) startBeelden();
+
+function schaal(file, max){
+  return new Promise((res,rej)=>{
+    const img=new Image(), url=URL.createObjectURL(file);
+    img.onload=()=>{
+      const r=Math.min(1,max/Math.max(img.width,img.height));
+      const c=document.createElement('canvas');
+      c.width=Math.round(img.width*r); c.height=Math.round(img.height*r);
+      c.getContext('2d').drawImage(img,0,0,c.width,c.height);
+      URL.revokeObjectURL(url);
+      c.toBlob(b=>b?res(b):rej(new Error('conversie mislukt')),'image/webp',.82);
+    };
+    img.onerror=()=>{URL.revokeObjectURL(url);rej(new Error('kan het beeld niet lezen'))};
+    img.src=url;
+  });
+}
+const zeg = t => document.getElementById('beheerStatus').textContent = t;
+
+async function bewaar(slot, file){
+  if(!file || !file.type.startsWith('image/')) return zeg('Dat is geen afbeelding.');
+  try{
+    zeg(`Bezig met ${slot.naam}…`);
+    const blob = await schaal(file, slot.max);
+    const up = await assets.upload(blob, {type:'image/webp'});
+    MEDIA = {...MEDIA, [slot.id]: up.id};
+    await doc.set({slots:MEDIA});
+    toonBeelden(); vulLijst();
+    zeg(`${slot.naam} bewaard (${Math.round(up.sizeBytes/1024)} kB).`);
+  }catch(e){ zeg('Niet gelukt: '+(e.code||e.message||'onbekende fout')); }
+}
+async function wis(slot){
+  const id=MEDIA[slot.id]; if(!id) return;
+  const rest={...MEDIA}; delete rest[slot.id];
+  try{ MEDIA=rest; await doc.set({slots:MEDIA}); try{await assets.delete(id);}catch(e){}
+    toonBeelden(); vulLijst(); zeg(`${slot.naam} verwijderd.`);
+  }catch(e){ zeg('Verwijderen mislukt.'); }
+}
+function vulLijst(){
+  const l=document.getElementById('slotLijst'); if(!l) return;
+  l.innerHTML='';
+  SLOTS.forEach(slot=>{
+    const rij=document.createElement('div'); rij.className='b-slot';
+    const b=bron(slot.id);
+    rij.innerHTML=`${b?`<img class="mini" src="${b}" alt="">`:'<span class="mini"></span>'}
+      <div><b>${slot.naam}</b><small>${slot.hint}</small></div>
+      <div class="acties"><button type="button" data-kies>${b?'Vervang':'Kies'}</button>${b?'<button type="button" data-wis>Wis</button>':''}</div>
+      ${b?`<div class="punten">Toon vooral: ${['top','center','bottom'].map(x=>`<button type="button" data-punt="${x}" class="${punt(slot.id)===x?'aan':''}">${{top:'boven',center:'midden',bottom:'onder'}[x]}</button>`).join('')}</div>`:''}`;
+    rij.querySelector('[data-kies]').onclick=()=>{
+      const inp=document.createElement('input'); inp.type='file'; inp.accept='image/*';
+      inp.onchange=()=>inp.files[0]&&bewaar(slot,inp.files[0]); inp.click();
+    };
+    const w=rij.querySelector('[data-wis]'); if(w) w.onclick=()=>wis(slot);
+    rij.querySelectorAll('[data-punt]').forEach(kn=>kn.onclick=async()=>{
+      MEDIA={...MEDIA,[slot.id+'_punt']:kn.dataset.punt};
+      try{ await doc.set({slots:MEDIA}); toonBeelden(); vulLijst(); zeg(`Bijsnijpunt van ${slot.naam} op ${kn.textContent}.`); }
+      catch(e){ zeg('Bijsnijpunt bewaren mislukt.'); }
+    });
+    ['dragenter','dragover'].forEach(t=>rij.addEventListener(t,e=>{e.preventDefault();rij.classList.add('sleep')}));
+    ['dragleave','drop'].forEach(t=>rij.addEventListener(t,e=>{e.preventDefault();rij.classList.remove('sleep')}));
+    rij.addEventListener('drop',e=>{ const f=e.dataTransfer.files[0]; if(f) bewaar(slot,f); });
+    l.appendChild(rij);
+  });
+}
+function bouwBeheer(){
+  const knop=document.getElementById('beheerKnop'), paneel=document.getElementById('beheer');
+  knop.classList.add('aan'); vulLijst();
+  const zet=on=>{paneel.classList.toggle('open',on); paneel.inert=!on; knop.setAttribute('aria-expanded',on); if(on)vulLijst();};
+  knop.onclick=()=>zet(!paneel.classList.contains('open'));
+  document.getElementById('beheerSluit').onclick=()=>zet(false);
+  addEventListener('keydown',e=>{ if(e.key==='Escape') zet(false); });
+}
+
+
+/* ================= VIDEO IN DE FILOSOFIE-SECTIE ================= */
+(()=>{
+  const fig=document.getElementById('filoMedia'), v=document.getElementById('filoVideo');
+  const k=document.getElementById('geluidKnop'), sp=document.getElementById('speelKnop');
+  if(!fig||!v) return;
+
+  const speel=()=>{ const p=v.play(); if(p&&p.catch) p.then(()=>{sp.hidden=true;}).catch(()=>{sp.hidden=false;}); };
+  v.addEventListener('playing',()=>{ sp.hidden=true; });
+  v.addEventListener('canplay',speel);
+  v.addEventListener('loadeddata',speel);
+  v.addEventListener('stalled',speel);
+  v.addEventListener('error',()=>{ if(v.error) fig.classList.add('geen-video'); });
+  sp.addEventListener('click',speel);
+  document.addEventListener('visibilitychange',()=>{ if(!document.hidden) speel(); });
+  speel();
+  // vangnet: blijft hij na twee seconden stilstaan, toon dan de afspeelknop
+  setTimeout(()=>{ if(v.paused && !v.error) sp.hidden=false; },2000);
+
+  const label=k.querySelector('span'), uit=k.querySelector('.uit'), aan=k.querySelector('.aan');
+  k.addEventListener('click',()=>{
+    v.muted=!v.muted;
+    k.setAttribute('aria-pressed',String(!v.muted));
+    label.textContent = v.muted ? 'Geluid aan' : 'Geluid uit';
+    uit.style.display = v.muted ? '' : 'none';
+    aan.style.display = v.muted ? 'none' : '';
+    if(!v.muted) v.volume=.7;
+    speel();
+  });
+})();
+
+
+/* ================= ANKERLINKS ================= */
+document.addEventListener('click',e=>{
+  const a=e.target.closest('a[href^="#"]'); if(!a) return;
+  const id=a.getAttribute('href').slice(1); if(!id) return;
+  const doel=document.getElementById(id); if(!doel) return;
+  e.preventDefault();
+  document.body.classList.remove('menu-open'); document.body.style.overflow='';
+  document.querySelectorAll('.heeft-sub.open').forEach(li=>{li.classList.remove('open');li.querySelector('button').setAttribute('aria-expanded',false);});
+  doel.scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth', block:'start'});
+  doel.setAttribute('tabindex','-1'); doel.focus({preventScroll:true});
+});
+
+document.getElementById('jaar').textContent=new Date().getFullYear();
+})();
+</script>
+</body>
+</html>

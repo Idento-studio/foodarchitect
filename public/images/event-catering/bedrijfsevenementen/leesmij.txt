@@ -1,0 +1,34 @@
+Plekhouders voor /event-catering/bedrijfsevenementen/ — 6 foto's.
+
+LET OP — de twee hero-foto's hieronder worden NIET automatisch gedetecteerd
+(in tegenstelling tot de andere foto's op deze lijst). Zet ze wel in deze map,
+maar pas ook src/app/event-catering/bedrijfsevenementen/page.tsx aan: vervang
+de DUMMY-foto door voor={{ src: "/images/event-catering/bedrijfsevenementen/hero-voor.jpg", alt: "..." }}
+en achter={{ src: "/images/event-catering/bedrijfsevenementen/hero-achter.jpg", alt: "..." }}
+op de <DienstHero>-component, met een beschrijvende alt-tekst per foto.
+
+Zet de overige foto's rechtstreeks in deze map, met exact deze bestandsnaam
+(extensie mag .jpg, .jpeg, .png of .webp zijn — de site kiest automatisch de juiste):
+
+  hero-voor.jpg            — grootste, meest sprekende staande foto (4:5) in de hero
+                            bovenaan de pagina, ligt vóór op de tweede fotokaart.
+                            Onderwerp: sfeerbeeld van een bedrijfsevenement.
+  hero-achter.jpg           — tweede staande foto (4:5) in de hero, ligt lichtjes
+                            gekanteld achter de eerste. Onderwerp: sfeerbeeld dat de
+                            eerste foto aanvult.
+  inleiding.jpg          — naast "Een visitekaartje voor uw onderneming"
+                            (vierkant, 1:1, gecentreerd bijgesneden).
+                            Onderwerp: hapjes geserveerd tijdens een bedrijfsevenement.
+  maatwerk-menus.jpg      — bij formule 01 "Maatwerk menu's" (liggend, 4:3).
+  logistiek.jpg           — bij formule 02 "Vlekkeloze logistiek" (liggend, 4:3).
+  lokale-kwaliteit.jpg    — bij formule 03 "Lokale kwaliteit" (liggend, 4:3).
+
+Voor de overige foto's (geen hero): geen codewijziging nodig, zodra een bestand
+hier staat toont de pagina het automatisch bij de volgende build/herlaad
+(zie src/components/PlaceholderFoto.tsx). Voor de twee hero-foto's is de
+codewijziging hierboven wél nodig.
+
+Let op bij foto's met een gezicht: het kader knipt bij met object-fit:cover en
+snijdt dus standaard gecentreerd bij. Staat een gezicht niet in het midden van de
+foto, geef dan `positie` mee aan het item in src/lib/content.ts (bv. positie: "top")
+zodat het gezicht niet wordt afgesneden.

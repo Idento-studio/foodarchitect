@@ -1,0 +1,6 @@
+Plaats hier: hero.jpg (of .png/.webp)
+Onderwerp: sfeerbeeld van een van de feestlocaties, bij voorkeur liggend, min. 2000px breed.
+
+Activeren in src/app/locaties/page.tsx:
+geef <CategorieHero .../> de props beeld="/images/locaties/hero.jpg"
+en beeldAlt="<korte beschrijving van de foto>".

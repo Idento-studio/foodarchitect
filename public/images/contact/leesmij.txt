@@ -1,0 +1,7 @@
+Plaats hier: hero.jpg (of .png/.webp)
+Onderwerp: optioneel sfeerbeeld, bij voorkeur liggend, min. 2000px breed. Deze pagina werkt ook prima
+zonder foto (toont dan het groene verloop).
+
+Activeren in src/app/contact/page.tsx:
+geef <CategorieHero .../> de props beeld="/images/contact/hero.jpg"
+en beeldAlt="<korte beschrijving van de foto>".

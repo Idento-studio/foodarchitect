@@ -1,0 +1,28 @@
+Plekhouders voor /private-catering/huwelijksfeesten/ — 6 foto's.
+
+[DONE] hero-voor.jpg en hero-achter.jpg staan er en zijn verwerkt in
+src/app/private-catering/huwelijksfeesten/page.tsx.
+
+Zet de overige foto's rechtstreeks in deze map, met exact deze bestandsnaam
+(extensie mag .jpg, .jpeg, .png of .webp zijn — de site kiest automatisch de juiste):
+
+  inleiding.jpg        — foto naast "Een Culinaire Beleving voor Jullie Mooiste Dag"
+                          (vierkant, 1:1, gecentreerd bijgesneden). Onderwerp: bv. Chef Kim
+                          die een bord afwerkt.
+  receptie.jpg          — bij formule 01 "Receptie" (liggend, 4:3).
+                          Onderwerp: fingerfood en een glas bubbels op een receptietafel.
+  walking-dinner.jpg     — bij formule 02 "Walking Dinner" (liggend, 4:3).
+                          Onderwerp: gasten die proeven tussen verschillende culinaire posten.
+  zittend-diner.jpg      — bij formule 03 "Zittend Diner" (liggend, 4:3).
+                          Onderwerp: een tafel gedekt voor een meergangen zittend diner.
+
+Voor inleiding/receptie/walking-dinner/zittend-diner: geen codewijziging nodig,
+zodra een bestand hier staat toont de pagina het automatisch bij de volgende
+build/herlaad (zie src/components/PlaceholderFoto.tsx). Voor de twee hero-foto's
+is de codewijziging hierboven wél nodig.
+
+Let op bij foto's met een gezicht (zoals walking-dinner): het kader knipt bij met
+object-fit:cover, en snijdt dus standaard gecentreerd bij. Staat een gezicht niet in
+het midden van de foto, geef dan `positie` mee aan <PlaceholderFoto> in de pagina
+(bv. positie="top") zodat het gezicht niet wordt afgesneden — nooit een gezicht
+laten wegvallen in de crop.

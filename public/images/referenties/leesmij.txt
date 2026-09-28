@@ -1,0 +1,8 @@
+Plaats hier: hero.jpg (of .png/.webp)
+Onderwerp: sfeerbeeld dat eerder werk vertegenwoordigt, bij voorkeur liggend, min. 2000px breed.
+
+Activeren in src/app/referenties/page.tsx:
+geef <CategorieHero .../> de props beeld="/images/referenties/hero.jpg"
+en beeldAlt="<korte beschrijving van de foto>".
+
+Zie ook OPENSTAAND.md: concrete klantcases/logo's ontbreken nog.

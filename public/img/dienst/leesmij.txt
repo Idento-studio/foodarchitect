@@ -1,0 +1,8 @@
+dummy.webp is een gedeelde, tijdelijke plekhouderfoto (hergebruik van de homepage-herofoto)
+voor de hero-achtergrond op alle dienst-detailpagina's (huwelijksfeesten, verjaardagen-jubilea,
+communie-lentefeesten, bedrijfsevenementen, personeelsfeesten, seminaries, productlanceringen).
+
+Om een pagina een eigen, unieke hero-foto te geven: zet de foto ergens onder public/images/
+(bv. in de bestaande gestructureerde map van die pagina) en pas in de bijhorende page.tsx de
+`beeld`-prop van <CategorieHero> aan naar dat pad. Tot dan tonen alle dienstenpagina's deze
+gedeelde dummy-foto.

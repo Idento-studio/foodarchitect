@@ -1,0 +1,9 @@
+Plaats hier: hero.jpg (of .png/.webp)
+Onderwerp: sfeerbeeld van tevreden gasten, bij voorkeur liggend, min. 2000px breed.
+
+Activeren in src/app/reviews/page.tsx:
+geef <CategorieHero .../> de props beeld="/images/reviews/hero.jpg"
+en beeldAlt="<korte beschrijving van de foto>".
+
+Zie ook OPENSTAAND.md: de videotestimonials (Sabrina & Dante, Jasmine & Arthur)
+van de oude site hebben nog geen beschikbaar videobestand.
