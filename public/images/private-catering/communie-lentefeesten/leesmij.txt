@@ -1,34 +1,18 @@
-Plekhouders voor /private-catering/communie-lentefeesten/ — 6 foto's.
+Plekhouders voor /private-catering/communie-lentefeesten/ — status per foto:
 
-LET OP — de twee hero-foto's hieronder worden NIET automatisch gedetecteerd
-(in tegenstelling tot de andere foto's op deze lijst). Zet ze wel in deze map,
-maar pas ook src/app/private-catering/communie-lentefeesten/page.tsx aan: vervang
-de DUMMY-foto door voor={{ src: "/images/private-catering/communie-lentefeesten/hero-voor.jpg", alt: "..." }}
-en achter={{ src: "/images/private-catering/communie-lentefeesten/hero-achter.jpg", alt: "..." }}
-op de <DienstHero>-component, met een beschrijvende alt-tekst per foto.
+[DONE] hero-voor.jpg — verwerkt in de hero.
+[DONE] totaalconcept.webp, ontzorging.webp — verwerkt bij formule 02 en 03.
+[DONE] hero-achter.webp — de eerder geblokkeerde watermerk-versie is vervangen
+door deze schone versie; verwerkt in de hero (tweede foto) in
+src/app/private-catering/communie-lentefeesten/page.tsx.
+[DONE] inleiding.webp — verwerkt naast "Een dag waarop uw kind centraal staat".
+[DONE] kindvriendelijk-maatwerk.webp — verwerkt bij formule 01 ("Kindvriendelijk
+Maatwerk"), met positie:"top" omdat het gezicht bovenaan in beeld staat.
 
-Zet de overige foto's rechtstreeks in deze map, met exact deze bestandsnaam
-(extensie mag .jpg, .jpeg, .png of .webp zijn — de site kiest automatisch de juiste):
-
-  hero-voor.jpg                  — grootste, meest sprekende staande foto (4:5) in de hero
-                                   bovenaan de pagina, ligt vóór op de tweede fotokaart.
-                                   Onderwerp: sfeerbeeld van een communie-/lentefeest.
-  hero-achter.jpg                 — tweede staande foto (4:5) in de hero, ligt lichtjes
-                                   gekanteld achter de eerste. Onderwerp: sfeerbeeld dat de
-                                   eerste foto aanvult.
-  inleiding.jpg                 — naast "Een dag waarop uw kind centraal staat"
-                                   (vierkant, 1:1, gecentreerd bijgesneden).
-                                   Onderwerp: buffet klaargezet voor een communiefeest.
-  kindvriendelijk-maatwerk.jpg   — bij formule 01 "Kindvriendelijk Maatwerk" (liggend, 4:3).
-  totaalconcept.jpg              — bij formule 02 "Totaalconcept" (liggend, 4:3).
-  ontzorging.jpg                 — bij formule 03 "Ontzorging" (liggend, 4:3).
-
-Voor de overige foto's (geen hero): geen codewijziging nodig, zodra een bestand
-hier staat toont de pagina het automatisch bij de volgende build/herlaad
-(zie src/components/PlaceholderFoto.tsx). Voor de twee hero-foto's is de
-codewijziging hierboven wél nodig.
-
-Let op bij foto's met een gezicht: het kader knipt bij met object-fit:cover en
-snijdt dus standaard gecentreerd bij. Staat een gezicht niet in het midden van de
-foto, geef dan `positie` mee aan het item in src/lib/content.ts (bv. positie: "top")
-zodat het gezicht niet wordt afgesneden.
+Let op: hero-achter.webp, inleiding.webp en kindvriendelijk-maatwerk.webp zijn
+alle drie exact dezelfde foto (identieke bestanden, een jongen in gilet die
+hapjes serveert). Daardoor staat nu op deze pagina drie keer dezelfde foto:
+in de hero, naast de intro-tekst, en bij formule 01. Als dat niet de bedoeling
+was en je nog aparte foto's hebt voor de intro en/of "Kindvriendelijk
+Maatwerk", zet die er gerust nog bij onder dezelfde bestandsnaam (inleiding.webp
+resp. kindvriendelijk-maatwerk.webp) — wordt automatisch opgepikt.

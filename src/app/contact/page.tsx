@@ -4,7 +4,8 @@ import { site } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Contact",
-  description: "Neem contact op met Food Architect voor catering in Gent, Deinze en omstreken.",
+  description: "Neem contact op met Food Architect, uw traiteur in Gent, Deinze en de ruime regio.",
+  keywords: ["contact traiteur Gent", "traiteur Gent contact", "catering offerte Gent", "traiteur regio Gent", "Food Architect contact"],
   alternates: { canonical: "/contact/" },
   openGraph: {
     title: "Contact",
@@ -38,12 +39,8 @@ export default function ContactPagina() {
           </div>
 
           <div className="paneel">
-            {/*
-              Formspree-endpoint nog niet bevestigd (zie OPENSTAAND.md) — actie hieronder is een
-              placeholder en verstuurt nog niets. Vervang zodra het endpoint bekend is:
-              action="https://formspree.io/f/<form-id>"
-            */}
-            <form className="contactform" action="https://formspree.io/f/TODO" method="POST">
+            <form className="contactform" action="https://formspree.io/f/xkjgkvej" method="POST">
+              <input type="hidden" name="_subject" value="Nieuw bericht via het contactformulier van Food Architect" />
               <div className="veld-rij">
                 <div className="veld">
                   <label htmlFor="voornaam">Voornaam</label>

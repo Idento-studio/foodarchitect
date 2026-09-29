@@ -15,7 +15,7 @@ const watWeDoen = [
 ];
 
 const navigatie = [
-  ["Over Food Architect", "/over-food-architect/"], ["Reviews", "/reviews/"],
+  ["Traiteur Gent", "/gent/"], ["Over Food Architect", "/over-food-architect/"], ["Reviews", "/reviews/"],
   ["Referenties", "/referenties/"], ["Locaties", "/locaties/"], ["Partners", "/partners/"],
   ["FAQ", "/faq/"], ["Contact", "/contact/"],
 ];
@@ -40,12 +40,12 @@ export default function Footer() {
             <li><a href={site.telefoonHref}>{site.telefoon}</a></li>
             <li>{site.adres.straat}</li>
             <li>{site.adres.postcode} {site.adres.gemeente}</li>
-            <li style={{ marginTop: ".6rem" }}><a href="https://www.instagram.com/" rel="noopener" target="_blank">Instagram</a></li>
-            <li><a href="https://www.pinterest.com/" rel="noopener" target="_blank">Pinterest</a></li>
+            <li style={{ marginTop: ".6rem" }}><a href={site.facebook} rel="noopener" target="_blank">Facebook</a></li>
+            <li><a href={site.instagram} rel="noopener" target="_blank">Instagram</a></li>
           </ul></div>
         </div>
         <div className="voet-onder">
-          <span>© {new Date().getFullYear()} {site.naam}. Alle rechten voorbehouden.</span>
+          <span>© {new Date().getFullYear()} {site.naam}. Alle rechten voorbehouden. Ondernemingsnummer {site.ondernemingsnummer}.</span>
           <ul>
             <li><Link href="/privacy/">Privacybeleid</Link></li>
             <li><Link href="/cookiebeleid/">Cookiebeleid</Link></li>

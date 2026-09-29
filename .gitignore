@@ -13,6 +13,11 @@ PROJECT-BRIEF.md
 # Brongrote foto's voor scripts/images.mjs; enkel de gegenereerde WebP's committen
 /assets-bron
 
+# Te zware video's om te committen (GitHub weigert >100MB zonder Git LFS).
+# Werken lokaal prima, maar staan pas op GitHub/Vercel na compressie — zie OPENSTAAND.md.
+/public/video/zalm.mp4
+/public/video/keuken.mp4
+
 # Windows- en macOS-rommel die per ongeluk mee zou reizen
 Thumbs.db
 desktop.ini

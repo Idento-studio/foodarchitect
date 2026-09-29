@@ -1,3 +1,10 @@
+[DONE] Foto per locatiekaartje: alix.webp, de-melkerij.webp, domeinsiliginis.avif,
+esceau.webp, prullenbos.webp en publiek-authentiek.webp staan er en zijn
+gekoppeld aan de juiste kaartjes in src/lib/content.ts (locaties-array, veld
+"pad"). Twee bestanden zijn hernoemd om spaties te verwijderen: "de melkerij.webp"
+-> de-melkerij.webp en "publiek authentiek.webp" -> publiek-authentiek.webp.
+
+Nog open: hero.jpg (optionele sfeerfoto in de hero bovenaan de pagina).
 Plaats hier: hero.jpg (of .png/.webp)
 Onderwerp: sfeerbeeld van een van de feestlocaties, bij voorkeur liggend, min. 2000px breed.
 

@@ -12,8 +12,9 @@ const heroVoor = { src: "/images/private-catering/huwelijksfeesten/hero-voor.jpg
 const heroAchter = { src: "/images/private-catering/huwelijksfeesten/hero-achter.jpg", alt: "Gasten aan tafel genieten van een hoofdgerecht" };
 
 export const metadata: Metadata = {
-  title: pagina.titel,
-  description: "Culinaire catering op maat voor huwelijksfeesten in Gent, Deinze en omstreken: van receptie tot walking dinner of een zittend meergangenmenu.",
+  title: "Traiteur Huwelijksfeest Gent",
+  description: "Traiteur voor huwelijksfeesten in Gent, Deinze en de ruime regio: culinaire catering op maat, van receptie tot walking dinner of een zittend meergangenmenu.",
+  keywords: ["traiteur huwelijk Gent", "catering huwelijksfeest Gent", "trouwtraiteur regio Gent", "traiteur Gent bruiloft", "cateraar huwelijk Gent"],
   alternates: { canonical: "/private-catering/huwelijksfeesten/" },
   openGraph: {
     title: pagina.titel,

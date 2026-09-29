@@ -1,7 +1,7 @@
 /** Lijniconen uit de Artifact-homepage, één bestand zodat ze overal gelijk blijven. */
 export type IcoonNaam =
   | "ringen" | "taart" | "kiem" | "vuur" | "gebouw" | "glazen" | "koffie" | "raket" | "huis"
-  | "plan" | "vink" | "bord";
+  | "plan" | "vink";
 
 const paden: Record<IcoonNaam, React.ReactNode> = {
   ringen: <><circle cx="9" cy="14.5" r="5" /><circle cx="15" cy="14.5" r="5" /><path d="M12 4.5l1.6 2.4h-3.2z" /></>,
@@ -15,7 +15,6 @@ const paden: Record<IcoonNaam, React.ReactNode> = {
   huis: <><path d="M3.5 11 12 4l8.5 7" /><path d="M6 10.5V20h12v-9.5" /><path d="M10 20v-5h4v5" /></>,
   plan: <><rect x="3" y="3" width="18" height="18" /><path d="M3 8.5h18M8.5 3v18" /></>,
   vink: <><circle cx="12" cy="12" r="9" /><path d="M7.5 12.5l3.2 3.2L16.5 9" /></>,
-  bord: <><circle cx="12" cy="12" r="6" /><circle cx="12" cy="12" r="4.4" strokeDasharray="1.5 2.5" /><path d="M4 4v4a2 2 0 0 0 4 0V4M6 4v16M20 4c-1.2 0-2 1.6-2 3.7s.8 3.3 2 3.3 2-1.2 2-3.3S21.2 4 20 4zM20 11v9" /></>,
 };
 
 export default function Icoon({ naam, className = "" }: { naam: IcoonNaam; className?: string }) {

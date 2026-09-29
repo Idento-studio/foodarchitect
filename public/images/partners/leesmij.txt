@@ -1,3 +1,11 @@
+[DONE] Foto per partnerkaartje: abcrent.webp, levipartyrental.webp, locquet-power-light.webp,
+memoire.webp, organic-concept.webp, rlevents.webp en tentz.webp staan er en zijn
+gekoppeld aan de juiste kaartjes in src/lib/content.ts (eventPartners-array, veld
+"pad"). Drie bestanden zijn hernoemd (hoofdletters/spaties weg): ABCrent.webp ->
+abcrent.webp, "Locquet Power Light.webp" -> locquet-power-light.webp en
+"organic concept.webp" -> organic-concept.webp.
+
+Nog open: hero.jpg (optionele sfeerfoto in de hero bovenaan de pagina).
 Plaats hier: hero.jpg (of .png/.webp)
 Onderwerp: sfeerbeeld van een opgebouwd event (tent, materiaal), bij voorkeur liggend, min. 2000px breed.
 

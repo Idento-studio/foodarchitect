@@ -18,24 +18,20 @@ const montserrat = Montserrat({
 export const metadata: Metadata = {
   metadataBase: new URL(site.domein),
   title: {
-    default: "Food Architect — culinaire vormgeving & catering in Vlaanderen",
-    template: "%s — Food Architect",
+    default: "Traiteur Gent | Food Architect",
+    template: "%s | Food Architect",
   },
   description:
-    "Catering op maat met lokale producten voor huwelijksfeesten, bedrijfsevenementen en Fire & Smoke BBQ. Chef Kim Vandevoorde, Gent & Deinze.",
+    "Food Architect is uw traiteur in Gent en de ruime regio: catering van hoge kwaliteit op maat, met lokale producten, voor huwelijksfeesten, bedrijfsevenementen en Fire & Smoke BBQ.",
+  keywords: ["traiteur Gent", "traiteur regio Gent", "catering Gent", "cateraar Gent", "traiteur hoge kwaliteit"],
   openGraph: {
     type: "website", locale: "nl_BE", siteName: site.naam, url: site.domein,
-    title: "Food Architect — culinaire vormgeving & catering in Vlaanderen",
-    description: "Wij serveren geen maaltijden. Wij creëren herinneringen. Catering op maat in heel Vlaanderen.",
+    title: "Traiteur Gent | Food Architect",
+    description: "Wij serveren geen maaltijden. Wij creëren herinneringen. Traiteur van hoge kwaliteit in Gent en de ruime regio.",
     images: [{ url: "/images/og-home.jpg", width: 1200, height: 630, alt: "Food Architect" }],
   },
   twitter: { card: "summary_large_image" },
   alternates: { canonical: "/" },
-  icons: {
-    icon: [{ url: "/favicon.ico" }, { url: "/icon-192.png", sizes: "192x192", type: "image/png" }],
-    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
-  },
-  manifest: "/site.webmanifest",
 };
 
 /** Basisafscherming; de sterkere variant met frame-ancestors staat in vercel.json. */

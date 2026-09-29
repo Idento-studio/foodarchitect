@@ -5,14 +5,15 @@ import FotoBand from "@/components/FotoBand";
 import Traject from "@/components/Traject";
 import SmaakCheck from "@/components/SmaakCheck";
 import SlotCta from "@/components/SlotCta";
-import { diensten, externLinks, megaPrivate } from "@/lib/content";
+import { diensten, offerteHref, megaPrivate } from "@/lib/content";
 
 const dienst = diensten.find((d) => d.slug === "private-catering")!;
 
 export const metadata: Metadata = {
-  title: dienst.titel,
+  title: "Traiteur Privéfeesten Gent",
   description:
-    "Catering op maat voor huwelijksfeesten, verjaardagen en communiefeesten in Gent, Deinze en omstreken. Chef Kim Vandevoorde ontwerpt het menu dat bij uw feest past.",
+    "Traiteur voor privéfeesten in Gent, Deinze en de ruime regio: huwelijksfeesten, verjaardagen en communiefeesten. Chef Kim Vandevoorde ontwerpt het menu dat bij uw feest past.",
+  keywords: ["traiteur privéfeest Gent", "catering privéfeest Gent", "traiteur regio Gent particulier", "cateraar feest Gent", "traiteur Gent huwelijk verjaardag"],
   alternates: { canonical: "/private-catering/" },
   openGraph: {
     title: dienst.titel,
@@ -32,7 +33,7 @@ export default function PrivateCatering() {
         voor={{ src: dienst.beeld, alt: dienst.alt }}
         knoppen={[
           { label: "Doe de smaak-check", href: "#smaakcheck", stijl: "vol" },
-          { label: "Vraag offerte aan", href: externLinks.offerte, stijl: "lijn" },
+          { label: "Vraag offerte aan", href: offerteHref, stijl: "lijn" },
         ]}
       />
       <SubDiensten

@@ -1,15 +1,15 @@
-import { externLinks } from "@/lib/content";
+import { offerteHref } from "@/lib/content";
 
 type Knop = { label: string; href: string };
 
 export default function CategorieHero({
-  kicker, titel, lead, beeld, beeldAlt, ctaPrimair, ctaSecundair,
+  kicker, titel, lead, beeld, beeldAlt, ctaPrimair, ctaSecundair, compact, toonKnoppen = true,
 }: {
   kicker: string; titel: string; lead: string; beeld?: string; beeldAlt?: string;
-  ctaPrimair?: Knop; ctaSecundair?: Knop;
+  ctaPrimair?: Knop; ctaSecundair?: Knop; compact?: boolean; toonKnoppen?: boolean;
 }) {
   return (
-    <section className={`hero donker${beeld ? " met-foto" : ""}`}>
+    <section className={`hero donker${beeld ? " met-foto" : ""}${compact ? " compact" : ""}`}>
       {beeld && (
         <div className="hero-foto">
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -22,14 +22,16 @@ export default function CategorieHero({
           <span className="kicker streep">{kicker}</span>
           <h1>{titel}</h1>
           <p className="lead">{lead}</p>
-          <div className="knoppen">
-            <a className="btn btn-vol" href={ctaPrimair?.href ?? "#smaakcheck"}>
-              {ctaPrimair?.label ?? "Doe de smaak-check"}
-            </a>
-            <a className="btn btn-lijn" href={ctaSecundair?.href ?? externLinks.offerte}>
-              {ctaSecundair?.label ?? "Vraag offerte aan"}
-            </a>
-          </div>
+          {toonKnoppen && (
+            <div className="knoppen">
+              <a className="btn btn-vol" href={ctaPrimair?.href ?? "#smaakcheck"}>
+                {ctaPrimair?.label ?? "Doe de smaak-check"}
+              </a>
+              <a className="btn btn-lijn" href={ctaSecundair?.href ?? offerteHref}>
+                {ctaSecundair?.label ?? "Vraag offerte aan"}
+              </a>
+            </div>
+          )}
         </div>
       </div>
     </section>

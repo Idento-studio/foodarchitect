@@ -5,7 +5,8 @@ import SlotCta from "@/components/SlotCta";
 
 export const metadata: Metadata = {
   title: "Reviews",
-  description: "Wat klanten zeggen over catering bij Food Architect.",
+  description: "Wat klanten zeggen over hun traiteur in Gent, Food Architect.",
+  keywords: ["traiteur Gent reviews", "catering ervaringen Gent", "traiteur regio Gent klanten", "cateraar Gent beoordelingen", "Food Architect reviews"],
   alternates: { canonical: "/reviews/" },
   openGraph: {
     title: "Reviews",
@@ -22,6 +23,8 @@ export default function ReviewsPagina() {
         kicker="Reviews"
         titel="Wat klanten zeggen"
         lead="Een greep uit de reacties van gasten en klanten na hun feest."
+        compact
+        toonKnoppen={false}
       />
       <section className="sectie salie">
         <div className="wrap">

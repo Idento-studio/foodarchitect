@@ -7,15 +7,15 @@ import Faq from "@/components/Faq";
 import SlotCta from "@/components/SlotCta";
 import { dienstDetails } from "@/lib/content";
 
-// Gedeelde plekhouderfoto (zie public/img/dienst/leesmij.txt) tot deze pagina een eigen
-// staand fotopaar krijgt — zet dan `voor`/`achter` hieronder op de eigen foto's + alt-tekst.
-const DUMMY = { src: "/img/dienst/dummy.webp", alt: "Chef werkt een bord af met saus in de keuken" };
+const heroVoor = { src: "/images/event-catering/productlanceringen/hero-voor.webp", alt: "Chef spuit een laatste toets op hapjes met tonijn" };
+const heroAchter = { src: "/images/event-catering/productlanceringen/hero-achter.jpg", alt: "Medewerker met vlinderdas serveert hapjes tijdens een event" };
 
 const pagina = dienstDetails["productlanceringen"];
 
 export const metadata: Metadata = {
-  title: pagina.titel,
-  description: "Culinaire catering voor productlanceringen in Vlaanderen: gerechten die de essentie van uw merk vertalen naar smaak, kleur en textuur.",
+  title: "Traiteur Productlancering Gent",
+  description: "Traiteur voor productlanceringen in Gent en de ruime regio: culinaire catering die de essentie van uw merk vertaalt naar smaak, kleur en textuur.",
+  keywords: ["traiteur productlancering Gent", "catering productlancering Gent", "cateraar bedrijfsevent regio Gent", "traiteur Gent", "eventcatering Gent"],
   alternates: { canonical: "/event-catering/productlanceringen/" },
   openGraph: {
     title: pagina.titel,
@@ -32,7 +32,8 @@ export default function Productlanceringen() {
         kicker={pagina.kicker}
         titel={pagina.titel}
         tekst={pagina.lead}
-        voor={DUMMY}
+        voor={heroVoor}
+        achter={heroAchter}
         knoppen={[
           { ...pagina.heroCtaPrimair, stijl: "vol" },
           { ...pagina.heroCtaSecundair, stijl: "lijn" },

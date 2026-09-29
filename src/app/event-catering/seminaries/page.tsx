@@ -14,8 +14,9 @@ const DUMMY = { src: "/img/dienst/dummy.webp", alt: "Chef werkt een bord af met 
 const pagina = dienstDetails["seminaries"];
 
 export const metadata: Metadata = {
-  title: pagina.titel,
-  description: "Catering voor seminaries en congressen in Vlaanderen: lichte, energieke menu's en een vlotte service die uw programma niet vertraagt.",
+  title: "Traiteur Seminarie & Congres Gent",
+  description: "Traiteur voor seminaries en congressen in Gent en de ruime regio: lichte, energieke menu's en een vlotte service die uw programma niet vertraagt.",
+  keywords: ["traiteur seminarie Gent", "catering congres Gent", "cateraar seminarie regio Gent", "traiteur Gent", "lunch catering Gent"],
   alternates: { canonical: "/event-catering/seminaries/" },
   openGraph: {
     title: pagina.titel,

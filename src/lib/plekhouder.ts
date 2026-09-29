@@ -1,7 +1,7 @@
 import { existsSync } from "node:fs";
 import path from "node:path";
 
-const EXTENSIES = ["jpg", "jpeg", "png", "webp"];
+const EXTENSIES = ["jpg", "jpeg", "png", "webp", "avif"];
 
 /**
  * Zoekt public/images/<pad>.<ext> voor elke ondersteunde extensie en geeft het

@@ -4,7 +4,21 @@ import { useEffect, useRef, useState } from "react";
 import Icoon from "./Iconen";
 import { beloftes } from "@/lib/content";
 
-export default function Filosofie() {
+type FilosofieProps = {
+  kicker?: string;
+  titel?: string;
+  onder?: string;
+  paragraaf1?: string;
+  paragraaf2?: string;
+};
+
+export default function Filosofie({
+  kicker = "Onze filosofie",
+  titel = "Feeding Memories: De Architectuur van Smaak",
+  onder = "Elk evenement is een unieke constructie.",
+  paragraaf1 = "Chef Kim Vandevoorde bouwt menu's zoals een architect een gebouw ontwerpt: met precisie, maatwerk en de beste lokale fundamenten. Wij ontzorgen u volledig, van de eerste amuse tot de laatste digestief.",
+  paragraaf2 = "Catering op maat met lokale producten en een totaalservice die geen detail vergeet.",
+}: FilosofieProps) {
   const video = useRef<HTMLVideoElement>(null);
   const [gedempt, setGedempt] = useState(true);
   const [toonSpeel, setToonSpeel] = useState(false);
@@ -38,13 +52,11 @@ export default function Filosofie() {
       <div className="wrap">
         <div className="filo">
           <div>
-            <span className="kicker">Onze filosofie</span>
-            <h2>Feeding Memories: De Architectuur van Smaak</h2>
-            <p className="onder">Elk evenement is een unieke constructie.</p>
-            <p>Chef Kim Vandevoorde bouwt menu&apos;s zoals een architect een gebouw ontwerpt: met precisie,
-              maatwerk en de beste lokale fundamenten. Wij ontzorgen u volledig, van de eerste amuse tot de
-              laatste digestief.</p>
-            <p>Catering op maat met lokale producten en een totaalservice die geen detail vergeet.</p>
+            <span className="kicker">{kicker}</span>
+            <h2>{titel}</h2>
+            <p className="onder">{onder}</p>
+            <p>{paragraaf1}</p>
+            <p>{paragraaf2}</p>
             <div className="chef">
               <div className="chef-foto" aria-hidden="true">KV</div>
               <div><b>Chef Kim Vandevoorde</b><span>Oprichter</span></div>

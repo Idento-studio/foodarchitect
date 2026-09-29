@@ -1,21 +1,21 @@
 import type { Metadata } from "next";
 import DienstHero from "@/components/DienstHero";
-import PlaceholderFoto from "@/components/PlaceholderFoto";
+import VideoMetGeluid from "@/components/VideoMetGeluid";
 import Formules from "@/components/Formules";
 import Testimonial from "@/components/Testimonial";
 import Faq from "@/components/Faq";
 import SlotCta from "@/components/SlotCta";
 import { dienstDetails } from "@/lib/content";
 
-// Gedeelde plekhouderfoto (zie public/img/dienst/leesmij.txt) tot deze pagina een eigen
-// staand fotopaar krijgt — zet dan `voor`/`achter` hieronder op de eigen foto's + alt-tekst.
-const DUMMY = { src: "/img/dienst/dummy.webp", alt: "Chef werkt een bord af met saus in de keuken" };
-
 const pagina = dienstDetails["bedrijfsevenementen"];
 
+const heroVoor = { src: "/images/event-catering/bedrijfsevenementen/hero-voor.jpg", alt: "Gast neemt een hapje van een plank tijdens een bedrijfsevenement" };
+const heroAchter = { src: "/images/event-catering/bedrijfsevenementen/hero-achter.jpg", alt: "Twee medewerkers met apron van Food Architect serveren hapjes" };
+
 export const metadata: Metadata = {
-  title: pagina.titel,
-  description: "Catering voor bedrijfsevenementen in Vlaanderen: van netwerkreceptie tot formele gala-avond, met maatwerk menu's en vlekkeloze logistiek.",
+  title: "Traiteur Bedrijfsevenement Gent",
+  description: "Traiteur voor bedrijfsevenementen in Gent en de ruime regio: van netwerkreceptie tot formele gala-avond, met maatwerk menu's en vlekkeloze logistiek.",
+  keywords: ["traiteur bedrijfsevenement Gent", "catering bedrijfsevent Gent", "cateraar bedrijfsfeest Gent", "traiteur Gent", "zakelijke catering regio Gent"],
   alternates: { canonical: "/event-catering/bedrijfsevenementen/" },
   openGraph: {
     title: pagina.titel,
@@ -32,7 +32,8 @@ export default function Bedrijfsevenementen() {
         kicker={pagina.kicker}
         titel={pagina.titel}
         tekst={pagina.lead}
-        voor={DUMMY}
+        voor={heroVoor}
+        achter={heroAchter}
         knoppen={[
           { ...pagina.heroCtaPrimair, stijl: "vol" },
           { ...pagina.heroCtaSecundair, stijl: "lijn" },
@@ -41,7 +42,7 @@ export default function Bedrijfsevenementen() {
 
       <section className="sectie licht" id="inleiding">
         <div className="wrap inleiding-met-foto">
-          <PlaceholderFoto pad={pagina.inleidingFoto} alt={pagina.inleidingFotoAlt} className="beeld" />
+          <VideoMetGeluid className="beeld" src="/video/event.mp4" ariaLabel="Sfeerbeeld van een event van Food Architect" />
           <div>
             <h2>{pagina.inleidingTitel}</h2>
             {pagina.inleiding.map((p) => <p key={p} style={{ marginTop: "1rem" }}>{p}</p>)}

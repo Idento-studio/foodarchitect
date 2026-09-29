@@ -1,6 +1,34 @@
-Plaats hier: hero.jpg (of .png/.webp)
-Onderwerp: portret van Chef Kim Vandevoorde, of een sfeerbeeld uit de keuken, bij voorkeur liggend, min. 2000px breed.
+Plekhouders voor /over-food-architect/ — 2 foto's.
 
-Activeren in src/app/over-food-architect/page.tsx:
-geef <CategorieHero .../> de props beeld="/images/over-food-architect/hero.jpg"
-en beeldAlt="<korte beschrijving van de foto>".
+[DONE] Video: "Onze filosofie / Feeding Memories" toont nu de video
+public/video/keuken.mp4 (rechts van de tekst) — zie
+src/app/over-food-architect/page.tsx.
+
+[GEBLOKKEERD — team.webp heeft een groot "fa food architect"-watermerk]
+De aangeleverde team.webp is opzijgezet (niet verwijderd, staat nog in deze
+map) als team.watermerk-vervangen.webp, omdat er een groot, doorschijnend
+logo overheen de foto staat (portfolio-proof, geen definitief bestand). Dit
+is iets anders dan de kleine, echte "fa food architect"-logo's op de
+schorten/vesten in de foto zelf — die zijn geen probleem. Lever een schone
+versie aan zonder overlay-watermerk, onder de originele naam "team.jpg" (of
+.webp/.png/.avif) — wordt automatisch opgepikt, geen codewijziging nodig.
+
+  team.jpg   — naast "Chef Kim Vandevoorde & Maître Delphine" (vierkant, 1:1,
+              gecentreerd bijgesneden). Onderwerp: portret van Chef Kim en
+              Maître Delphine samen, of eventueel losse portretten naast elkaar.
+              Zodra dit bestand hier staat, toont de pagina het automatisch bij
+              de volgende build/herlaad — geen codewijziging nodig.
+
+  hero.jpg   — LET OP: deze foto wordt NIET automatisch gedetecteerd. Zet ze
+              wel in deze map, maar pas ook src/app/over-food-architect/page.tsx
+              aan: geef <CategorieHero .../> de extra props
+              beeld="/images/over-food-architect/hero.jpg" en
+              beeldAlt="<korte beschrijving van de foto>".
+              Onderwerp: portret van Chef Kim en/of Maître Delphine, of een
+              sfeerbeeld uit de keuken/zaal, bij voorkeur liggend, min. 2000px breed.
+
+Let op bij foto's met een gezicht: het kader knipt bij met object-fit:cover en
+snijdt dus standaard gecentreerd bij. Staat een gezicht niet in het midden van de
+foto, geef dan `positie` mee aan de <PlaceholderFoto .../> in
+src/app/over-food-architect/page.tsx (bv. positie="top") zodat het gezicht
+niet wordt afgesneden.

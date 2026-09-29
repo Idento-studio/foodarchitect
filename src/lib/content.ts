@@ -16,13 +16,19 @@ export const site = {
     postcode: "9840",
     gemeente: "De Pinte",
   },
-  gaId: "G-XXXXXXXXXX",
+  ondernemingsnummer: "0500.800.706",
+  btw: "BE 0500.800.706",
+  instagram: "https://www.instagram.com/foodarchitect_by_kim/",
+  facebook: "https://www.facebook.com/FoodArchitect/",
+  gaId: "G-B622X5H91Y",
 };
 
 export const externLinks = {
-  offerte: "https://foodarchitect.idento.be/offerte-aanvragen/",
   impressies: "https://foodarchitect.idento.be/impressies/",
 };
+
+/** Eigen offertepagina met het doorklikspelletje (was voorheen een link naar de oude site). */
+export const offerteHref = "/offerte-aanvragen/";
 
 type SubLink = { label: string; href: string; tekst: string; icoon: IcoonNaam };
 export type IcoonNaam =
@@ -124,17 +130,15 @@ export const partners = [
  * Materiaal- en eventpartners voor de /partners/-pagina — overgenomen van de
  * huidige live site (foodarchitect.idento.be/partners/). Andere categorie dan
  * `partners` hierboven, dat over lokale voedselpartners gaat.
- * Mémoire's URL bevatte een accent (mémoire.be); hier genormaliseerd naar
- * memoire.be — controleer of dat de echte domeinnaam is.
  */
 export const eventPartners = [
-  { naam: "ABC-Rent", tekst: "Tafels, stoelen & servies", url: "https://www.abcrent.be/" },
-  { naam: "Organic Concept", tekst: "Exclusieve sailcloth & stretchtenten", url: "https://www.organic-concept.com/" },
-  { naam: "Mémoire", tekst: "Event styling & creatieve concepten", url: "https://www.memoire.be/" },
-  { naam: "RL Events", tekst: "Licht- & geluidstechniek", url: "https://www.rl-events.be/" },
-  { naam: "Tentz", tekst: "Kwaliteitstenten & overspanningen", url: "https://www.tentz.be/" },
-  { naam: "Levi Party Rental", tekst: "Feestmateriaal & meubilair", url: "https://www.levipartyrental.be/nl" },
-  { naam: "Locquet Power & Light", tekst: "Mobiele energie & generatoren", url: "https://locquet.com/nl/" },
+  { naam: "ABC-Rent", tekst: "Tafels, stoelen & servies", url: "https://www.abcrent.be/", pad: "partners/abcrent" },
+  { naam: "Organic Concept", tekst: "Exclusieve sailcloth & stretchtenten", url: "https://www.organic-concept.com/", pad: "partners/organic-concept" },
+  { naam: "Mémoire", tekst: "Event styling & creatieve concepten", url: "https://www.mémoire.be/", pad: "partners/memoire" },
+  { naam: "RL Events", tekst: "Licht- & geluidstechniek", url: "https://www.rl-events.be/", pad: "partners/rlevents" },
+  { naam: "Tentz", tekst: "Kwaliteitstenten & overspanningen", url: "https://www.tentz.be/", pad: "partners/tentz" },
+  { naam: "Levi Party Rental", tekst: "Feestmateriaal & meubilair", url: "https://www.levipartyrental.be/nl", pad: "partners/levipartyrental" },
+  { naam: "Locquet Power & Light", tekst: "Mobiele energie & generatoren", url: "https://locquet.com/nl/", pad: "partners/locquet-power-light" },
 ];
 
 /**
@@ -143,41 +147,68 @@ export const eventPartners = [
  * consistent opgehaald); controleer of dit de correcte schrijfwijze is.
  */
 export const locaties = [
-  { naam: "L'esceau", tekst: "Zottegem", url: "https://lesceau.be/" },
-  { naam: "De Melkerij", tekst: "Vinderoute (Lovendegem)", url: "https://demelkerij.events/" },
-  { naam: "Domein Siliginis", tekst: "Sint-Martens-Latem", url: "https://www.siliginis.be/" },
-  { naam: "Prullenbos", tekst: "Wetteren", url: "https://prullenbos.be/" },
-  { naam: "Publiek Authentiek", tekst: "Deinze / Zulte", url: "https://www.publiekauthentiek.be/" },
-  { naam: "Alix - Table & Jardin d'Amis", tekst: "Gent", url: "https://alix.gent/" },
+  { naam: "L'esceau", tekst: "Zottegem", url: "https://lesceau.be/", pad: "locaties/esceau" },
+  { naam: "De Melkerij", tekst: "Vinderoute (Lovendegem)", url: "https://demelkerij.events/", pad: "locaties/de-melkerij" },
+  { naam: "Domein Siliginis", tekst: "Sint-Martens-Latem", url: "https://www.siliginis.be/", pad: "locaties/domeinsiliginis" },
+  { naam: "Prullenbos", tekst: "Wetteren", url: "https://prullenbos.be/", pad: "locaties/prullenbos" },
+  { naam: "Publiek Authentiek", tekst: "Deinze / Zulte", url: "https://www.publiekauthentiek.be/", pad: "locaties/publiek-authentiek" },
+  { naam: "Alix - Table & Jardin d'Amis", tekst: "Gent", url: "https://alix.gent/", pad: "locaties/alix" },
 ];
 
 /**
- * Veelgestelde vragen — inhoudelijk overgenomen en vertaald van de huidige
- * live site. De vraag over "het gezicht achter Food Architect" noemde op de
- * oude site ook een "Maître Delphine" naast Chef Kim; die naam komt nergens
- * voor in de nieuwe, aangeleverde content (enkel Chef Kim Vandevoorde), dus
- * hier weggelaten tot bevestigd of dat nog klopt — zie OPENSTAAND.md.
+ * Veelgestelde vragen voor /faq/ — volledig overgenomen van de huidige live
+ * site, inclusief de categorie-indeling die daar werd gehanteerd.
  */
-export const faq = [
-  { v: "Waarom noemen jullie jezelf 'Food Architect'?", a: "Wij geloven dat een menu moet worden ontworpen zoals een gebouw: met een visie, een stevig fundament en oog voor detail." },
-  { v: "Wat is de betekenis van jullie slogan 'Feeding Memories'?", a: "Wij serveren geen maaltijden, wij bouwen herinneringen. Ons doel is dat de smaak en beleving van uw feest nog jarenlang blijft nazinderen." },
-  { v: "Hoe ziet het traject van een aanvraag eruit?", a: "Ons traject bestaat uit vier duidelijke stappen: de kennismaking, het proeven van de smaken, het finetunen van de details en de uitvoering op de grote dag." },
-  { v: "Werken jullie met lokale producten?", a: "Absoluut. Wij zijn geworteld in de regio Gent en Deinze en werken nauw samen met lokale partners zoals Monsieur Boudin voor ambachtelijke witte pensen." },
-  { v: "Kan ik een menu volledig zelf samenstellen?", a: "Jazeker. Wij luisteren naar uw favoriete smaken en herinneringen en vertalen die naar een uniek menu op maat." },
-  { v: "Hoe gaan jullie om met allergieën en vegetariërs?", a: "Maatwerk is ons DNA. We ontwerpen volwaardige alternatieve gerechten voor gasten met allergieën of specifieke dieetwensen, zodat zij een gelijkwaardige culinaire ervaring beleven." },
-  { v: "Wat houdt het 'Fire & Smoke' concept precies in?", a: "Dit is onze specialiteit gericht op gastronomische BBQ en showcooking, waarbij de kracht van vuur en rook centraal staat voor een unieke beleving." },
-  { v: "Voorzien jullie ook personeel?", a: "Ja, wij bieden een totaalservice inclusief professioneel zaalpersoneel onder leiding van onze eigen maître." },
-  { v: "Moet ik zelf borden, bestek of glazen huren?", a: "In onze totaalservice nemen wij de volledige logistiek uit handen. Wij kunnen al het nodige materiaal voorzien, van verfijnd servies tot professionele glazen." },
-  { v: "Komen jullie ook catering verzorgen op een eigen locatie?", a: "Wij zijn experts in catering op locatie, of dat nu in uw eigen tuin is, op een bedrijventerrein of in een feestzaal." },
-  { v: "Hoeveel ruimte hebben jullie nodig in mijn keuken?", a: "Onze chefs zijn getraind om op locatie te werken. We kunnen indien nodig zelfs een volledige pop-up keuken opbouwen met eigen apparatuur." },
-  { v: "Wat kost catering bij Food Architect gemiddeld?", a: "Omdat elk feest een uniek ontwerp is, werken we niet met vaste pakketprijzen. We maken altijd een offerte op maat op basis van uw visie en budget." },
-  { v: "Hoe kan ik een offerte aanvragen?", a: "U kunt contact opnemen via onze website of direct starten met onze interactieve smaak-check om uw wensen in kaart te brengen." },
-  { v: "Is er een minimale groepsgrootte voor boekingen?", a: "We ontwerpen feesten van diverse groottes, van intieme privédiners tot grootschalige bedrijfsevenementen." },
-  { v: "Kunnen jullie ook helpen bij het vinden van een locatie?", a: "Door onze jarenlange ervaring in de regio Gent en Deinze kennen we veel unieke locaties en adviseren we u hier graag bij." },
-  { v: "Wat gebeurt er als de weersomstandigheden tegenvallen?", a: "Wij denken proactief mee over back-upscenario's, zoals tenten of logistieke aanpassingen, zodat de kwaliteit nooit in het gedrang komt." },
-  { v: "Bieden jullie ook drankenarrangementen aan?", a: "Ja, wij verzorgen een volledig drankenpakket op maat, inclusief geselecteerde wijnen, bieren en non-alcoholische alternatieven." },
-  { v: "Kunnen we vooraf proeven wat er geserveerd wordt?", a: "Zeker. Bij grote projecten en huwelijken is een proefsessie een cruciaal onderdeel van ons traject om de smaken perfect af te stemmen." },
+export const faqCategorieen = [
+  {
+    naam: "Onze werkwijze & filosofie",
+    vragen: [
+      { v: "Waarom noemen jullie jezelf 'Food Architect'?", a: "Wij geloven dat een menu moet worden ontworpen zoals een gebouw: met een visie, een stevig fundament en oog voor detail." },
+      { v: "Wie is het gezicht achter Food Architect?", a: "Chef Kim Vandevoorde staat als oprichter en drijvende kracht in voor zowel de culinaire leiding als de organisatie van elk feest." },
+      { v: "Wat is de betekenis van jullie slogan 'Feeding Memories'?", a: "Wij serveren geen maaltijden, wij bouwen herinneringen. Ons doel is dat de smaak en beleving van uw feest nog jarenlang blijft nazinderen." },
+      { v: "Hoe ziet het traject van een aanvraag eruit?", a: "Ons traject bestaat uit vier duidelijke stappen: de kennismaking, het proeven van de smaken, het finetunen van de details en de uitvoering op de grote dag." },
+    ],
+  },
+  {
+    naam: "Menu & culinair maatwerk",
+    vragen: [
+      { v: "Werken jullie met lokale producten?", a: "Absoluut. Wij zijn geworteld in de regio Gent en Deinze en werken nauw samen met lokale partners zoals Monsieur Boudin voor ambachtelijke witte pensen." },
+      { v: "Kan ik een menu volledig zelf samenstellen?", a: "Jazeker. Wij luisteren naar uw favoriete smaken en herinneringen en vertalen die naar een uniek menu op maat." },
+      { v: "Hoe gaan jullie om met allergieën en vegetariërs?", a: "Maatwerk is ons DNA. We ontwerpen volwaardige alternatieve gerechten voor gasten met allergieën of specifieke dieetwensen, zodat zij een gelijkwaardige culinaire ervaring beleven." },
+      { v: "Wat houdt het 'Fire & Smoke' concept precies in?", a: "Dit is onze specialiteit gericht op gastronomische BBQ en showcooking, waarbij de kracht van vuur en rook centraal staat voor een unieke beleving." },
+    ],
+  },
+  {
+    naam: "Logistiek & service",
+    vragen: [
+      { v: "Voorzien jullie ook personeel?", a: "Ja, wij bieden een totaalservice inclusief professioneel zaalpersoneel onder leiding van onze eigen maître." },
+      { v: "Moet ik zelf borden, bestek of glazen huren?", a: "In onze totaalservice nemen wij de volledige logistiek uit handen. Wij kunnen al het nodige materiaal voorzien, van verfijnd servies tot professionele glazen." },
+      { v: "Komen jullie ook catering verzorgen op een eigen locatie?", a: "Wij zijn experts in catering op locatie, of dat nu in uw eigen tuin is, op een bedrijventerrein of in een feestzaal." },
+      { v: "Hoeveel ruimte hebben jullie nodig in mijn keuken?", a: "Onze chefs zijn getraind om op locatie te werken. We kunnen indien nodig zelfs een volledige pop-up keuken opbouwen met eigen apparatuur." },
+    ],
+  },
+  {
+    naam: "Prijzen & offertes",
+    vragen: [
+      { v: "Wat kost catering bij Food Architect gemiddeld?", a: "Omdat elk feest een uniek ontwerp is, werken we niet met vaste pakketprijzen. We maken altijd een offerte op maat op basis van uw visie en budget." },
+      { v: "Hoe kan ik een offerte aanvragen?", a: "U kunt contact opnemen via onze website of direct starten met onze interactieve smaak-check om uw wensen in kaart te brengen." },
+      { v: "Is er een minimale groepsgrootte voor boekingen?", a: "We ontwerpen feesten van diverse groottes, van intieme privédiners tot grootschalige bedrijfsevenementen." },
+    ],
+  },
+  {
+    naam: "Algemeen & extra service",
+    vragen: [
+      { v: "Kunnen jullie ook helpen bij het vinden van een locatie?", a: "Door onze jarenlange ervaring in de regio Gent en Deinze kennen we veel unieke locaties en adviseren we u hier graag bij." },
+      { v: "Wat gebeurt er als de weersomstandigheden tegenvallen?", a: "Wij denken proactief mee over back-upscenario's, zoals tenten of logistieke aanpassingen, zodat de kwaliteit nooit in het gedrang komt." },
+      { v: "Bieden jullie ook drankenarrangementen aan?", a: "Ja, wij verzorgen een volledig drankenpakket op maat, inclusief geselecteerde wijnen, bieren en non-alcoholische alternatieven." },
+      { v: "Kunnen we vooraf proeven wat er geserveerd wordt?", a: "Zeker. Bij grote projecten en huwelijken is een proefsessie een cruciaal onderdeel van ons traject om de smaken perfect af te stemmen." },
+      { v: "Wat is de smaak-check op jullie site?", a: "Dit is een interactieve manier om op een speelse wijze te ontdekken welke culinaire ervaring het beste bij u past." },
+    ],
+  },
 ];
+
+/** Platte lijst van alle algemene FAQ's, afgeleid van faqCategorieen (bv. voor structured data). */
+export const faq = faqCategorieen.flatMap((c) => c.vragen);
 
 /** Enige review die we van de klant hebben. Geen review aangeleverd = sectie weg. */
 export const review = {
@@ -208,6 +239,45 @@ export const formuleNamen: Record<string, string> = {
   vuur: "Fire & Smoke",
 };
 
+/**
+ * Vragen voor het doorklikspelletje op /offerte-aanvragen/ — overgenomen van
+ * de gelijknamige pagina op de huidige live site (foodarchitect.idento.be).
+ */
+export const offerteEventTypes = [
+  { v: "huwelijk", l: "Huwelijk" },
+  { v: "bedrijfsevent", l: "Bedrijfsevent" },
+  { v: "priveefeest", l: "Privéfeest" },
+  { v: "receptie", l: "Receptie" },
+  { v: "ander", l: "Ander event" },
+] as const;
+
+export const offerteLocatieOpties = [
+  { v: "vast", l: "Ja, onze locatie ligt vast" },
+  { v: "op-het-oog", l: "We hebben een locatie op het oog" },
+  { v: "nog-niet", l: "Nee, we zoeken nog een locatie" },
+] as const;
+
+export const offerteCulinairOpties = [
+  { v: "receptie", l: "Receptie met fingerfood & hapjes" },
+  { v: "walking-dinner", l: "Walking dinner" },
+  { v: "zittend-diner", l: "Zittend diner" },
+  { v: "fire-smoke", l: "Fire & Smoke BBQ" },
+  { v: "iets-anders", l: "Iets anders" },
+  { v: "advies", l: "Nog niet zeker, adviseer ons" },
+] as const;
+
+export const offerteExtraOpties = [
+  { v: "catering", l: "Enkel catering" },
+  { v: "locatie", l: "Eventlocatie" },
+  { v: "materiaal", l: "Tafels, stoelen & feestmateriaal" },
+  { v: "tent", l: "Tent" },
+  { v: "licht-geluid", l: "Licht & geluid" },
+  { v: "ceremonie", l: "Ceremonie" },
+  { v: "stroom", l: "Stroomvoorziening" },
+  { v: "geregeld", l: "We hebben alles al geregeld" },
+  { v: "nog-niet", l: "We weten het nog niet" },
+] as const;
+
 type Knop = { label: string; href: string };
 type FormuleKaart = { nr: string; titel: string; tekst: string; foto: string; alt: string; positie?: string };
 export type DienstDetail = {
@@ -219,7 +289,7 @@ export type DienstDetail = {
   ctaKicker: string; ctaTitel: string; ctaTekst: string; ctaKnop: Knop;
 };
 
-const generiekeHeroLead = "Wij creëren culinaire ervaringen die net zo uniek zijn als jullie verhaal. Van intiem diner tot groots feest — elk detail architecturaal doordacht.";
+const generiekeHeroLead = "Wij creëren culinaire ervaringen die net zo uniek zijn als jullie verhaal. Van intiem diner tot groots feest: elk detail architecturaal doordacht.";
 const generiekeHeroCtas = {
   heroCtaPrimair: { label: "Ontdek onze visie", href: "#inleiding" },
   heroCtaSecundair: { label: "Bekijk portfolio", href: externLinks.impressies },
@@ -228,7 +298,7 @@ const generiekeCta = {
   ctaKicker: "Klaar om te beginnen?",
   ctaTitel: "Laten We Jullie Avond Samen Ontwerpen",
   ctaTekst: "Neem vrijblijvend contact op voor een eerste kennismaking en proefmenu.",
-  ctaKnop: { label: "Vraag een offerte aan", href: externLinks.offerte },
+  ctaKnop: { label: "Vraag een offerte aan", href: offerteHref },
 };
 
 /**
@@ -260,7 +330,7 @@ export const dienstDetails: Record<string, DienstDetail> = {
   huwelijksfeesten: {
     kicker: "Huwelijksfeesten",
     titel: "Jullie Liefde, Onze Architectuur",
-    lead: "Wij creëren culinaire ervaringen die net zo uniek zijn als jullie verhaal. Van intiem diner tot groots feest — elk detail architecturaal doordacht.",
+    lead: "Wij creëren culinaire ervaringen die net zo uniek zijn als jullie verhaal. Van intiem diner tot groots feest: elk detail architecturaal doordacht.",
     heroCtaPrimair: { label: "Ontdek onze visie", href: "#inleiding" },
     heroCtaSecundair: { label: "Bekijk portfolio", href: externLinks.impressies },
     inleidingTitel: "Een Culinaire Beleving voor Jullie Mooiste Dag",
@@ -274,14 +344,14 @@ export const dienstDetails: Record<string, DienstDetail> = {
     formulesTitel: "Drie Culinaire Ervaringen",
     formulesIntro: "Elke formule is volledig op maat samen te stellen. De prijzen variëren op basis van jullie wensen en het seizoen.",
     formules: [
-      { nr: "01", titel: "Receptie", tekst: "Een stijlvolle ontvangst met fingerfood, amuses en bubbels. De perfecte opening van jullie avond — licht, verfijnd en sociaal.", foto: "private-catering/huwelijksfeesten/receptie", alt: "Fingerfood en een glas bubbels op een receptietafel" },
-      { nr: "02", titel: "Walking Dinner", tekst: "Een dynamisch diner waarbij gasten vrij bewegen tussen culinaire stations. Elke stand een verrassend gerecht — informeel maar verfijnd.", foto: "private-catering/huwelijksfeesten/walking-dinner", alt: "Gast met een glas en een bord tijdens een walking dinner", positie: "top" },
+      { nr: "01", titel: "Receptie", tekst: "Een stijlvolle ontvangst met fingerfood, amuses en bubbels: de perfecte opening van jullie avond, licht, verfijnd en sociaal.", foto: "private-catering/huwelijksfeesten/receptie", alt: "Fingerfood en een glas bubbels op een receptietafel" },
+      { nr: "02", titel: "Walking Dinner", tekst: "Een dynamisch diner waarbij gasten vrij bewegen tussen culinaire stations. Elke stand een verrassend gerecht, informeel maar verfijnd.", foto: "private-catering/huwelijksfeesten/walking-dinner", alt: "Gast met een glas en een bord tijdens een walking dinner", positie: "top" },
       { nr: "03", titel: "Zittend Diner", tekst: "Het ultieme gastronomische moment. Meerdere gangen geserveerd aan tafel, met aandacht voor presentatie, smaak en timing.", foto: "private-catering/huwelijksfeesten/zittend-diner", alt: "Tafel gedekt voor een meergangen zittend diner" },
     ],
     ctaKicker: "Klaar om te beginnen?",
     ctaTitel: "Laten We Jullie Avond Samen Ontwerpen",
     ctaTekst: "Neem vrijblijvend contact op voor een eerste kennismaking en proefmenu.",
-    ctaKnop: { label: "Vraag een offerte aan", href: externLinks.offerte },
+    ctaKnop: { label: "Vraag een offerte aan", href: offerteHref },
   },
 
   "verjaardagen-jubilea": {
@@ -300,9 +370,9 @@ export const dienstDetails: Record<string, DienstDetail> = {
     formulesTitel: "Uw Visie, Onze Culinaire Uitvoering",
     formulesIntro: "Bij Food Architect staat maatwerk centraal in onze naam en onze werkwijze. Wij vertalen uw favoriete smaken, herinneringen en wensen naar het bord.",
     formules: [
-      { nr: "01", titel: "Themafeesten", tekst: "Wilt u een menu dat doet denken aan die ene onvergetelijke reis? Wij ontwerpen het voor u.", foto: "private-catering/verjaardagen-jubilea/themafeesten", alt: "Themagericht gedekte tafel voor een verjaardagsfeest" },
-      { nr: "02", titel: "Flexibele Formules", tekst: "Kiest u voor een elegant zittend diner, een dynamische walking dinner of een interactieve Fire & Smoke BBQ?", foto: "private-catering/verjaardagen-jubilea/flexibele-formules", alt: "Walking dinner tijdens een verjaardagsfeest" },
-      { nr: "03", titel: "Totaalbeleving", tekst: "Wij nemen de volledige organisatie uit handen — van servies en personeel tot de sfeervolle inkleding — zodat u zich enkel hoeft te focussen op uw gasten.", foto: "private-catering/verjaardagen-jubilea/totaalbeleving", alt: "Gedekte tafel met sfeervolle aankleding" },
+      { nr: "01", titel: "Themafeesten", tekst: "Wilt u een menu dat doet denken aan die ene onvergetelijke reis? Wij ontwerpen het voor u.", foto: "private-catering/verjaardagen-jubilea/themafeesten", alt: "Hapjes met tonijn, afgewerkt met een spuitzak" },
+      { nr: "02", titel: "Flexibele Formules", tekst: "Kiest u voor een elegant zittend diner, een dynamische walking dinner of een interactieve Fire & Smoke BBQ?", foto: "private-catering/verjaardagen-jubilea/flexibele-formules", alt: "Gasten nemen hapjes van een schaal tijdens een receptie" },
+      { nr: "03", titel: "Totaalbeleving", tekst: "Wij nemen de volledige organisatie uit handen (van servies en personeel tot de sfeervolle inkleding) zodat u zich enkel hoeft te focussen op uw gasten.", foto: "private-catering/verjaardagen-jubilea/totaalbeleving", alt: "Chef werkt visgerechten af met saus" },
     ],
     faq: [
       { v: "Vanaf hoeveel personen verzorgen jullie een verjaardagsfeest?", a: "Wij verzorgen zowel intieme privédiners vanaf kleine groepen als grote tuinfeesten voor honderden gasten." },
@@ -327,17 +397,17 @@ export const dienstDetails: Record<string, DienstDetail> = {
     inleidingTitel: "Een dag waarop uw kind centraal staat",
     inleiding: [
       "Het communie- of lentefeest is een dag waarop uw kind centraal staat. Bij Food Architect begrijpen we dat dit vraagt om een specifieke aanpak: een feestelijke sfeer die toegankelijk is voor kinderen, maar waar de volwassenen gastronomisch worden verwend.",
-      "Wij ontwerpen een namiddag of avond die perfect aansluit bij de energie van de dag — van een uitgebreid koud en warm buffet tot een hippe walking dinner of een interactieve BBQ.",
+      "Wij ontwerpen een namiddag of avond die perfect aansluit bij de energie van de dag, van een uitgebreid koud en warm buffet tot een hippe walking dinner of een interactieve BBQ.",
     ],
     inleidingFoto: "private-catering/communie-lentefeesten/inleiding",
-    inleidingFotoAlt: "Buffet klaargezet voor een communiefeest",
+    inleidingFotoAlt: "Jongen in gilet serveert hapjes van een plank tijdens een receptie",
     formulesKicker: "Zorgeloos genieten",
     formulesTitel: "In Eigen Tuin of op Locatie",
     formulesIntro: "Terwijl uw kind speelt, zorgen wij dat alles vlekkeloos verloopt.",
     formules: [
-      { nr: "01", titel: "Kindvriendelijk Maatwerk", tekst: "Wij ontwerpen gerechten die kinderen herkennen en lekker vinden, maar dan met de kwalitatieve twist van Food Architect.", foto: "private-catering/communie-lentefeesten/kindvriendelijk-maatwerk", alt: "Kindvriendelijk gerecht mooi opgemaakt" },
-      { nr: "02", titel: "Totaalconcept", tekst: "Wij voorzien indien gewenst niet alleen het eten, maar ook de nodige infrastructuur zoals buffettafels, borden en bediening.", foto: "private-catering/communie-lentefeesten/totaalconcept", alt: "Opgestelde buffettafel voor een communiefeest" },
-      { nr: "03", titel: "Ontzorging", tekst: "Chef Kim en ons team waken over de kwaliteit en de timing, zodat u elk moment met uw gasten kunt delen.", foto: "private-catering/communie-lentefeesten/ontzorging", alt: "Chef Kim aan het werk tijdens een communiefeest" },
+      { nr: "01", titel: "Kindvriendelijk Maatwerk", tekst: "Wij ontwerpen gerechten die kinderen herkennen en lekker vinden, maar dan met de kwalitatieve twist van Food Architect.", foto: "private-catering/communie-lentefeesten/kindvriendelijk-maatwerk", alt: "Jongen in gilet serveert hapjes van een plank", positie: "top" },
+      { nr: "02", titel: "Totaalconcept", tekst: "Wij voorzien indien gewenst niet alleen het eten, maar ook de nodige infrastructuur zoals buffettafels, borden en bediening.", foto: "private-catering/communie-lentefeesten/totaalconcept", alt: "Medewerker met apron van Food Architect draagt een schaal hapjes", positie: "top" },
+      { nr: "03", titel: "Ontzorging", tekst: "Chef Kim en ons team waken over de kwaliteit en de timing, zodat u elk moment met uw gasten kunt delen.", foto: "private-catering/communie-lentefeesten/ontzorging", alt: "Gast geniet glimlachend van een hapje", positie: "top" },
     ],
     faq: [
       { v: "Vanaf hoeveel personen verzorgen jullie een communiefeest?", a: "Wij passen onze formules aan op basis van uw gezelschap, van intieme familiekringen tot grote groepen." },
@@ -370,9 +440,9 @@ export const dienstDetails: Record<string, DienstDetail> = {
     formulesTitel: "Culinaire Ontzorging op Hoog Niveau",
     formulesIntro: "Vier pijlers die elk bedrijfsevenement dragen.",
     formules: [
-      { nr: "01", titel: "Maatwerk menu's", tekst: "Die passen bij de tone-of-voice van uw event.", foto: "event-catering/bedrijfsevenementen/maatwerk-menus", alt: "Maatwerkmenu geserveerd tijdens een bedrijfsevenement" },
-      { nr: "02", titel: "Vlekkeloze logistiek", tekst: "Coördinatie van A tot Z door ons ervaren team.", foto: "event-catering/bedrijfsevenementen/logistiek", alt: "Bediening tijdens een bedrijfsevenement" },
-      { nr: "03", titel: "Lokale kwaliteit", tekst: "Wij serveren het beste uit de regio Gent en Deinze.", foto: "event-catering/bedrijfsevenementen/lokale-kwaliteit", alt: "Lokale ingrediënten verwerkt in een gerecht" },
+      { nr: "01", titel: "Maatwerk menu's", tekst: "Die passen bij de tone-of-voice van uw event.", foto: "event-catering/bedrijfsevenementen/maatwerk-menus", alt: "Chefs werken bordjes met rundvlees en krieltjes af in de keuken" },
+      { nr: "02", titel: "Vlekkeloze logistiek", tekst: "Coördinatie van A tot Z door ons ervaren team.", foto: "event-catering/bedrijfsevenementen/logistiek", alt: "Medewerker met apron van Food Architect serveert een hapje", positie: "top" },
+      { nr: "03", titel: "Lokale kwaliteit", tekst: "Wij serveren het beste uit de regio Gent en Deinze.", foto: "event-catering/bedrijfsevenementen/lokale-kwaliteit", alt: "Hapjes met tonijn, afgewerkt met een spuitzak" },
     ],
     faq: zakelijkeFaq,
     ...generiekeCta,
@@ -394,9 +464,9 @@ export const dienstDetails: Record<string, DienstDetail> = {
     formulesTitel: "Van Formeel Diner tot 'Fire & Smoke' Spektakel",
     formulesIntro: "Kiest u voor een chique avond of een rauwe, interactieve beleving? Een combinatie is ook mogelijk.",
     formules: [
-      { nr: "01", titel: "Walking Dinners", tekst: "Ideaal voor maximale interactie tussen collega's.", foto: "event-catering/personeelsfeesten/walking-dinners", alt: "Collega's tijdens een walking dinner" },
-      { nr: "02", titel: "Fire & Smoke BBQ", tekst: "De ultieme informele setting met showcooking.", foto: "event-catering/personeelsfeesten/fire-smoke-bbq", alt: "Showcooking op de grill tijdens een personeelsfeest" },
-      { nr: "03", titel: "Themafeesten", tekst: "Wij passen onze architectuur aan uw specifieke wensen aan.", foto: "event-catering/personeelsfeesten/themafeesten", alt: "Themagericht ingericht personeelsfeest" },
+      { nr: "01", titel: "Walking Dinners", tekst: "Ideaal voor maximale interactie tussen collega's.", foto: "event-catering/personeelsfeesten/walking-dinners", alt: "Medewerker serveert een hapje van een plank", positie: "top" },
+      { nr: "02", titel: "Fire & Smoke BBQ", tekst: "De ultieme informele setting met showcooking.", foto: "event-catering/personeelsfeesten/fire-smoke-bbq", alt: "Chef bereidt vlees op de Fire & Smoke BBQ", positie: "top" },
+      { nr: "03", titel: "Themafeesten", tekst: "Wij passen onze architectuur aan uw specifieke wensen aan.", foto: "event-catering/personeelsfeesten/themafeesten", alt: "Gast proeft een verfijnd gerecht tijdens een themafeest" },
     ],
     faq: zakelijkeFaq,
     ...generiekeCta,
@@ -442,9 +512,9 @@ export const dienstDetails: Record<string, DienstDetail> = {
     formulesTitel: "Innovatie op het Bord",
     formulesIntro: "Vier pijlers die uw lancering culinair vertalen.",
     formules: [
-      { nr: "01", titel: "Creatieve Concepten", tekst: "Hapjes die passen bij de identiteit van uw merk.", foto: "event-catering/productlanceringen/creatieve-concepten", alt: "Hapje ontworpen rond een merkidentiteit" },
-      { nr: "02", titel: "Visueel Spektakel", tekst: "Architecturale presentaties die gasten direct willen delen.", foto: "event-catering/productlanceringen/visueel-spektakel", alt: "Architecturaal opgemaakt gerecht tijdens een productlancering" },
-      { nr: "03", titel: "Maatwerk", tekst: "Wij denken mee over hoe we uw merknaam culinair kunnen verankeren.", foto: "event-catering/productlanceringen/maatwerk", alt: "Op maat ontworpen gerecht voor een merklancering" },
+      { nr: "01", titel: "Creatieve Concepten", tekst: "Hapjes die passen bij de identiteit van uw merk.", foto: "event-catering/productlanceringen/creatieve-concepten", alt: "Hapjes met radijs en roomkaas op een krokant bodempje" },
+      { nr: "02", titel: "Visueel Spektakel", tekst: "Architecturale presentaties die gasten direct willen delen.", foto: "event-catering/productlanceringen/visueel-spektakel", alt: "Chefs werken borden af in de keuken" },
+      { nr: "03", titel: "Maatwerk", tekst: "Wij denken mee over hoe we uw merknaam culinair kunnen verankeren.", foto: "event-catering/productlanceringen/maatwerk", alt: "Borden met rundvlees en krieltjes klaargezet in de keuken" },
     ],
     faq: zakelijkeFaq,
     ...generiekeCta,

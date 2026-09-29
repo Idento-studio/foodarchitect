@@ -1,7 +1,23 @@
 import Foto from "@/components/Foto";
 import { externLinks } from "@/lib/content";
 
-export default function Hero() {
+type HeroProps = {
+  kicker?: string;
+  titel?: string;
+  leadRegel1?: string;
+  leadRegel2?: string;
+  feitTitel?: string;
+  feitTekst?: string;
+};
+
+export default function Hero({
+  kicker = "Culinaire architectuur",
+  titel = "Food Architect: Culinaire Vormgeving & Catering in Vlaanderen",
+  leadRegel1 = "Wij serveren geen maaltijden. Wij creëren herinneringen.",
+  leadRegel2 = "Feeding Memories door vakmanschap en passie.",
+  feitTitel = "Gent & Deinze",
+  feitTekst = "Catering in heel Vlaanderen",
+}: HeroProps) {
   return (
     <section className="hero donker met-foto" id="hero">
       {/* Bronfoto is staand (1080×1350), geen liggend beeld zoals oorspronkelijk gevraagd in
@@ -13,11 +29,11 @@ export default function Hero() {
       <div className="raster" aria-hidden="true" />
       <div className="wrap">
         <div className="hero-grid">
-          <span className="kicker streep">Culinaire architectuur</span>
-          <h1>Food Architect: Culinaire Vormgeving &amp; Catering in Vlaanderen</h1>
+          <span className="kicker streep">{kicker}</span>
+          <h1>{titel}</h1>
           <p className="lead">
-            Wij serveren geen maaltijden. Wij creëren herinneringen.
-            <br />Feeding Memories door vakmanschap en passie.
+            {leadRegel1}
+            <br />{leadRegel2}
           </p>
           <div className="knoppen">
             <a className="btn btn-vol" href="#keuken">Ontdek Onze Smaakwereld</a>
@@ -25,7 +41,7 @@ export default function Hero() {
           </div>
           <div className="hero-feiten">
             <div><strong>Chef Kim Vandevoorde</strong>Oprichter en ontwerper van elk menu</div>
-            <div><strong>Gent &amp; Deinze</strong>Catering in heel Vlaanderen</div>
+            <div><strong>{feitTitel}</strong>{feitTekst}</div>
             <div><strong>Totaalservice</strong>Van amuse tot digestief</div>
           </div>
         </div>

@@ -1,34 +1,8 @@
-Plekhouders voor /event-catering/personeelsfeesten/ — 6 foto's.
+[DONE] hero-voor.jpg, hero-achter.jpg, walking-dinners.jpg, fire-smoke-bbq.jpg
+en themafeesten.jpg staan er en zijn verwerkt. walking-dinners en fire-smoke-bbq
+kregen positie:"top" in src/lib/content.ts omdat het gezicht bovenaan in beeld
+staat en anders zou worden bijgesneden door de liggende 4:3 kadrering.
 
-LET OP — de twee hero-foto's hieronder worden NIET automatisch gedetecteerd
-(in tegenstelling tot de andere foto's op deze lijst). Zet ze wel in deze map,
-maar pas ook src/app/event-catering/personeelsfeesten/page.tsx aan: vervang
-de DUMMY-foto door voor={{ src: "/images/event-catering/personeelsfeesten/hero-voor.jpg", alt: "..." }}
-en achter={{ src: "/images/event-catering/personeelsfeesten/hero-achter.jpg", alt: "..." }}
-op de <DienstHero>-component, met een beschrijvende alt-tekst per foto.
-
-Zet de overige foto's rechtstreeks in deze map, met exact deze bestandsnaam
-(extensie mag .jpg, .jpeg, .png of .webp zijn — de site kiest automatisch de juiste):
-
-  hero-voor.jpg          — grootste, meest sprekende staande foto (4:5) in de hero
-                          bovenaan de pagina, ligt vóór op de tweede fotokaart.
-                          Onderwerp: sfeerbeeld van een personeelsfeest.
-  hero-achter.jpg         — tweede staande foto (4:5) in de hero, ligt lichtjes
-                          gekanteld achter de eerste. Onderwerp: sfeerbeeld dat de
-                          eerste foto aanvult.
-  inleiding.jpg        — naast "Niets versterkt de groepsgeest zoals samen genieten"
-                          (vierkant, 1:1, gecentreerd bijgesneden).
-                          Onderwerp: collega's die samen genieten tijdens een personeelsfeest.
-  walking-dinners.jpg   — bij formule 01 "Walking Dinners" (liggend, 4:3).
-  fire-smoke-bbq.jpg    — bij formule 02 "Fire & Smoke BBQ" (liggend, 4:3).
-  themafeesten.jpg      — bij formule 03 "Themafeesten" (liggend, 4:3).
-
-Voor de overige foto's (geen hero): geen codewijziging nodig, zodra een bestand
-hier staat toont de pagina het automatisch bij de volgende build/herlaad
-(zie src/components/PlaceholderFoto.tsx). Voor de twee hero-foto's is de
-codewijziging hierboven wél nodig.
-
-Let op bij foto's met een gezicht: het kader knipt bij met object-fit:cover en
-snijdt dus standaard gecentreerd bij. Staat een gezicht niet in het midden van de
-foto, geef dan `positie` mee aan het item in src/lib/content.ts (bv. positie: "top")
-zodat het gezicht niet wordt afgesneden.
+[DONE, gewijzigd] In plaats van een inleiding-foto toont deze pagina nu een video
+(public/video/event.mp4) naast "Niets versterkt de groepsgeest zoals samen
+genieten" — zie src/app/event-catering/personeelsfeesten/page.tsx.

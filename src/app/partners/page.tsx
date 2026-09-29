@@ -6,7 +6,8 @@ import { eventPartners } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Partners",
-  description: "De materiaal- en eventpartners waarmee Food Architect samenwerkt: van tenten en meubilair tot licht- en geluidstechniek.",
+  description: "De materiaal- en eventpartners waarmee uw traiteur in Gent samenwerkt: van tenten en meubilair tot licht- en geluidstechniek.",
+  keywords: ["eventpartners Gent", "traiteur partners regio Gent", "materiaalverhuur feest Gent", "traiteur Gent samenwerking", "catering partners Gent"],
   alternates: { canonical: "/partners/" },
   openGraph: {
     title: "Partners",
@@ -23,6 +24,8 @@ export default function PartnersPagina() {
         kicker="Partners"
         titel="Met wie we samenwerken"
         lead="Naast onze eigen keuken werken we samen met vaste partners voor materiaal, styling en techniek, zodat elk feest tot in de puntjes verzorgd is."
+        compact
+        toonKnoppen={false}
       />
       <section className="sectie licht">
         <div className="wrap">

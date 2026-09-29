@@ -6,8 +6,9 @@ import SlotCta from "@/components/SlotCta";
 import { locaties } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: "Unieke locaties",
-  description: "Ontdek de unieke feestlocaties in en rond Gent en Deinze waar Food Architect al catering verzorgde.",
+  title: "Feestlocaties Gent",
+  description: "Ontdek de unieke feestlocaties in en rond Gent en Deinze waar uw traiteur Food Architect al catering verzorgde.",
+  keywords: ["feestlocaties regio Gent", "traiteur locaties Gent", "trouwlocatie Gent traiteur", "catering locatie Gent", "traiteur regio Gent"],
   alternates: { canonical: "/locaties/" },
   openGraph: {
     title: "Unieke locaties",
@@ -24,6 +25,8 @@ export default function LocatiesPagina() {
         kicker="Locaties"
         titel="Unieke vestigingen"
         lead="Van kasteeldomein tot industriële loods: wij verzorgen catering op de locatie van uw keuze, en kennen deze unieke plekken in en rond Gent en Deinze goed."
+        compact
+        toonKnoppen={false}
       />
       <section className="sectie licht">
         <div className="wrap">

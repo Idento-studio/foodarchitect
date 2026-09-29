@@ -2,12 +2,12 @@ import type { MetadataRoute } from "next";
 import { site } from "@/lib/content";
 
 const paden = [
-  "", "private-catering", "private-catering/huwelijksfeesten",
+  "", "gent", "private-catering", "private-catering/huwelijksfeesten",
   "private-catering/verjaardagen-jubilea", "private-catering/communie-lentefeesten",
   "event-catering", "event-catering/bedrijfsevenementen", "event-catering/personeelsfeesten",
   "event-catering/seminaries", "event-catering/productlanceringen",
   "fire-smoke-bbq", "over-food-architect", "reviews", "referenties", "locaties",
-  "partners", "faq", "contact", "privacy", "cookiebeleid",
+  "partners", "faq", "contact", "offerte-aanvragen", "privacy", "cookiebeleid",
 ];
 
 export const dynamic = "force-static";

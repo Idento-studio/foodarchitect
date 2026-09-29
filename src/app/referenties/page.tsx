@@ -5,7 +5,8 @@ import { externLinks } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Referenties",
-  description: "Bekijk het portfolio van Food Architect: eerdere huwelijksfeesten, bedrijfsevenementen en Fire & Smoke BBQ's.",
+  description: "Bekijk het portfolio van uw traiteur in Gent: eerdere huwelijksfeesten, bedrijfsevenementen en Fire & Smoke BBQ's.",
+  keywords: ["traiteur Gent portfolio", "catering referenties Gent", "traiteur regio Gent voorbeelden", "cateraar Gent eerder werk", "Food Architect referenties"],
   alternates: { canonical: "/referenties/" },
   openGraph: {
     title: "Referenties",
@@ -22,6 +23,8 @@ export default function ReferentiesPagina() {
         kicker="Referenties"
         titel="Eerder werk"
         lead="Benieuwd hoe een feest of event van Food Architect er in de praktijk uitziet? Ons portfolio geeft een goede indruk."
+        compact
+        toonKnoppen={false}
       />
       <section className="sectie licht">
         <div className="wrap" style={{ maxWidth: "44em" }}>

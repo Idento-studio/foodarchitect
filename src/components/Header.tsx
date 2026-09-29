@@ -3,11 +3,11 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import Icoon from "./Iconen";
-import { megaEvent, megaPrivate, megaVuur, externLinks } from "@/lib/content";
+import { megaEvent, megaPrivate, megaVuur, offerteHref } from "@/lib/content";
 
 const topLinks = [
   ["Reviews", "/reviews/"], ["Referenties", "/referenties/"], ["Locaties", "/locaties/"],
-  ["Partners", "/partners/"], ["FAQ", "/faq/"], ["Contact", "/contact/"],
+  ["Partners", "/partners/"], ["FAQ", "/faq/"],
 ];
 
 type MegaItem = { label: string; href: string; tekst: string; icoon: string };
@@ -82,7 +82,8 @@ export default function Header() {
 
         <div className="wrap nav">
           <Link className="merk" href="/" aria-label="Food Architect, naar home">
-            <span className="logo" aria-hidden="true">fa</span>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img className="logo" src="/images/logo-fa-wit.svg" alt="" aria-hidden="true" />
           </Link>
 
           <nav aria-label="Hoofdmenu" ref={navRef} onMouseLeave={() => setOpen(null)}>
@@ -110,10 +111,11 @@ export default function Header() {
                   ctaTekst="Drie vragen en u weet of het vuur past bij uw gezelschap en uw locatie." />
               </li>
               <li><Link href="/over-food-architect/">Over</Link></li>
+              <li><Link href="/contact/">Contact</Link></li>
             </ul>
           </nav>
 
-          <a className="btn btn-vol" href={externLinks.offerte}>Offerte aanvragen</a>
+          <a className="btn btn-vol" href={offerteHref}>Offerte aanvragen</a>
           <button className="burger" aria-expanded={lade} aria-controls="lade"
             aria-label={lade ? "Menu sluiten" : "Menu openen"} onClick={() => setLade(!lade)}>
             <span />
@@ -133,10 +135,11 @@ export default function Header() {
           <Link href="/fire-smoke-bbq/" onClick={() => setLade(false)}>Alles over Fire & Smoke</Link>
         </div></details>
         <Link href="/over-food-architect/" onClick={() => setLade(false)}>Over</Link>
+        <Link href="/contact/" onClick={() => setLade(false)}>Contact</Link>
         <div className="klein">
           {topLinks.map(([l, h]) => <Link href={h} key={h} onClick={() => setLade(false)}>{l}</Link>)}
         </div>
-        <a className="btn btn-vol" href={externLinks.offerte}>Offerte aanvragen</a>
+        <a className="btn btn-vol" href={offerteHref}>Offerte aanvragen</a>
       </div>
     </>
   );

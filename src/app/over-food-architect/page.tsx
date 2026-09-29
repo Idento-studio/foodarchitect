@@ -1,13 +1,16 @@
 import type { Metadata } from "next";
 import CategorieHero from "@/components/CategorieHero";
+import PlaceholderFoto from "@/components/PlaceholderFoto";
+import VideoMetGeluid from "@/components/VideoMetGeluid";
 import Kenmerken from "@/components/Kenmerken";
 import Testimonial from "@/components/Testimonial";
 import SmaakCheck from "@/components/SmaakCheck";
 import SlotCta from "@/components/SlotCta";
 
 export const metadata: Metadata = {
-  title: "Over Food Architect",
-  description: "Maak kennis met Food Architect en chef Kim Vandevoorde: culinaire vormgevers met een missie, geworteld in de regio Gent en Deinze.",
+  title: "Over uw Traiteur in Gent",
+  description: "Maak kennis met Food Architect, uw traiteur in Gent: Chef Kim Vandevoorde, culinaire vormgever met een missie, geworteld in de regio.",
+  keywords: ["traiteur Gent Chef Kim", "over Food Architect Gent", "traiteur regio Gent team", "cateraar Gent verhaal", "traiteur Gent filosofie"],
   alternates: { canonical: "/over-food-architect/" },
   openGraph: {
     title: "Over Food Architect",
@@ -31,23 +34,50 @@ export default function OverFoodArchitect() {
         titel="Culinaire Vormgevers met een Missie"
         lead="Feeding Memories: wij geloven dat een maaltijd meer is dan een verzameling ingrediënten. Het is een emotie, een herinnering die je deelt."
       />
+      <section className="sectie licht" id="inleiding">
+        <div className="wrap inleiding-met-foto">
+          <PlaceholderFoto pad="over-food-architect/team" alt="Chef Kim Vandevoorde en haar team" className="beeld" />
+          <div>
+            <span className="kicker">Over Food Architect</span>
+            <h2>Chef Kim Vandevoorde</h2>
+            <p style={{ marginTop: "1rem" }}>
+              Achter elke memorabele smaak zit een doordacht ontwerp. Food Architect is de creatie van Chef
+              Kim Vandevoorde, die als architect van de smaak elk menu ontwerpt en samen met haar team ook
+              instaat voor de organisatie en gastvrijheid tijdens uw feest.
+            </p>
+            <p style={{ marginTop: "1rem" }}>
+              Een totaalservice die geen detail vergeet: van het eerste gesprek tot de bediening op de dag
+              zelf, zodat u zelf niets anders hoeft te doen dan genieten.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="sectie salie">
+        <div className="wrap inleiding-met-foto omgekeerd">
+          <VideoMetGeluid className="beeld" src="/video/keuken.mp4" ariaLabel="Sfeerbeeld van de keuken van Food Architect" />
+          <div>
+            <span className="kicker">Onze filosofie</span>
+            <h2>Feeding Memories</h2>
+            <p style={{ marginTop: "1rem" }}>
+              Wij geloven dat een maaltijd meer is dan een verzameling ingrediënten. Het is een emotie, een
+              herinnering die je deelt met de mensen die je dierbaar zijn. Onze slogan &apos;Feeding
+              Memories&apos; is geen loze kreet; het is de rode draad in alles wat we doen. Wij bouwen aan
+              momenten die blijven nazinderen, lang nadat de laatste gast vertrokken is.
+            </p>
+          </div>
+        </div>
+      </section>
+
       <section className="sectie licht">
         <div className="wrap">
           <div style={{ maxWidth: "44em" }}>
-            <span className="kicker">Chef Kim Vandevoorde</span>
-            <h2>De architect van de smaak</h2>
-            <p className="onder">Een menu ontwerpen zoals een architect een gebouw ontwerpt.</p>
-            <p>
-              Chef Kim Vandevoorde bouwt elk menu met precisie, maatwerk en de beste lokale fundamenten.
-              Geen standaardformules, maar een culinair ontwerp op maat van elk feest en elk gezelschap.
-            </p>
+            <h2>Maatwerk als Fundament</h2>
             <p style={{ marginTop: "1rem" }}>
-              {/* Op de vorige site werd naast Chef Kim ook een "Maître Delphine" vermeld als
-                  medeoprichter voor zaal en gastvrijheid. Die naam komt nergens voor in de
-                  aangeleverde content voor deze nieuwe site — vraag na of dit nog klopt en of
-                  er een tweede naam moet worden vermeld, zie OPENSTAAND.md. */}
-              Een totaalservice die geen detail vergeet: van het eerste gesprek tot de bediening op de dag
-              zelf, zodat u zelf niets anders hoeft te doen dan genieten.
+              Waarom de naam Food Architect? Omdat wij geloven in structurele kwaliteit. Net zoals een
+              architect vertrekt van een blanco blad en een visie, zo ontwerpen wij elk menu op maat. Geen
+              bandwerk, maar puur vakmanschap waarbij we nauw samenwerken met lokale helden zoals Monsieur
+              Boudin om de hoogste kwaliteit uit de regio Gent en Deinze te garanderen.
             </p>
           </div>
           <div style={{ marginTop: "clamp(3rem,6vw,4.5rem)" }}>

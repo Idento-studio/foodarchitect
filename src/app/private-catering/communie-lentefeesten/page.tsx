@@ -7,15 +7,15 @@ import Faq from "@/components/Faq";
 import SlotCta from "@/components/SlotCta";
 import { dienstDetails } from "@/lib/content";
 
-// Gedeelde plekhouderfoto (zie public/img/dienst/leesmij.txt) tot deze pagina een eigen
-// staand fotopaar krijgt — zet dan `voor`/`achter` hieronder op de eigen foto's + alt-tekst.
-const DUMMY = { src: "/img/dienst/dummy.webp", alt: "Chef werkt een bord af met saus in de keuken" };
-
 const pagina = dienstDetails["communie-lentefeesten"];
 
+const heroVoor = { src: "/images/private-catering/communie-lentefeesten/hero-voor.jpg", alt: "Feestelijk dessertbord met meringue, bes en room op een bloemetjesbord" };
+const heroAchter = { src: "/images/private-catering/communie-lentefeesten/hero-achter.webp", alt: "Jongen in gilet serveert hapjes van een plank tijdens een receptie" };
+
 export const metadata: Metadata = {
-  title: pagina.titel,
-  description: "Catering op maat voor communie- en lentefeesten in Gent, Deinze en omstreken, met een menu voor groot en klein.",
+  title: "Traiteur Communie & Lentefeest Gent",
+  description: "Traiteur voor communie- en lentefeesten in Gent, Deinze en de ruime regio: catering op maat, met een menu voor groot en klein.",
+  keywords: ["traiteur communiefeest Gent", "catering communie Gent", "lentefeest traiteur regio Gent", "traiteur Gent kinderfeest", "cateraar communie Gent"],
   alternates: { canonical: "/private-catering/communie-lentefeesten/" },
   openGraph: {
     title: pagina.titel,
@@ -32,7 +32,8 @@ export default function CommunieLentefeesten() {
         kicker={pagina.kicker}
         titel={pagina.titel}
         tekst={pagina.lead}
-        voor={DUMMY}
+        voor={heroVoor}
+        achter={heroAchter}
         knoppen={[
           { ...pagina.heroCtaPrimair, stijl: "vol" },
           { ...pagina.heroCtaSecundair, stijl: "lijn" },

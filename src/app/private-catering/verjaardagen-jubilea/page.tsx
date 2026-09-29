@@ -1,21 +1,21 @@
 import type { Metadata } from "next";
 import DienstHero from "@/components/DienstHero";
-import PlaceholderFoto from "@/components/PlaceholderFoto";
+import VideoMetGeluid from "@/components/VideoMetGeluid";
 import Formules from "@/components/Formules";
 import Testimonial from "@/components/Testimonial";
 import Faq from "@/components/Faq";
 import SlotCta from "@/components/SlotCta";
 import { dienstDetails } from "@/lib/content";
 
-// Gedeelde plekhouderfoto (zie public/img/dienst/leesmij.txt) tot deze pagina een eigen
-// staand fotopaar krijgt — zet dan `voor`/`achter` hieronder op de eigen foto's + alt-tekst.
-const DUMMY = { src: "/img/dienst/dummy.webp", alt: "Chef werkt een bord af met saus in de keuken" };
-
 const pagina = dienstDetails["verjaardagen-jubilea"];
 
+const heroVoor = { src: "/images/private-catering/verjaardagen-jubilea/hero-voor.jpg", alt: "Hapjes met gehaktballetjes op prikkers, geserveerd op krantenpapier" };
+const heroAchter = { src: "/images/private-catering/verjaardagen-jubilea/hero-achter.jpg", alt: "Gast geniet glimlachend van een hapje tijdens een verjaardagsfeest" };
+
 export const metadata: Metadata = {
-  title: pagina.titel,
-  description: "Catering op maat voor verjaardagen en jubilea in Gent, Deinze en omstreken: themafeesten, flexibele formules en een totaalbeleving.",
+  title: "Traiteur Verjaardag & Jubileum Gent",
+  description: "Traiteur voor verjaardagen en jubilea in Gent, Deinze en de ruime regio: themafeesten, flexibele formules en een totaalbeleving op maat.",
+  keywords: ["traiteur verjaardag Gent", "catering jubileum Gent", "traiteur regio Gent feest", "cateraar verjaardagsfeest Gent", "traiteur Gent jubileum"],
   alternates: { canonical: "/private-catering/verjaardagen-jubilea/" },
   openGraph: {
     title: pagina.titel,
@@ -32,7 +32,8 @@ export default function VerjaardagenJubilea() {
         kicker={pagina.kicker}
         titel={pagina.titel}
         tekst={pagina.lead}
-        voor={DUMMY}
+        voor={heroVoor}
+        achter={heroAchter}
         knoppen={[
           { ...pagina.heroCtaPrimair, stijl: "vol" },
           { ...pagina.heroCtaSecundair, stijl: "lijn" },
@@ -41,7 +42,7 @@ export default function VerjaardagenJubilea() {
 
       <section className="sectie licht" id="inleiding">
         <div className="wrap inleiding-met-foto">
-          <PlaceholderFoto pad={pagina.inleidingFoto} alt={pagina.inleidingFotoAlt} className="beeld" />
+          <VideoMetGeluid className="beeld" src="/video/zalm.mp4" ariaLabel="Zalm wordt klaargemaakt in de keuken" />
           <div>
             <h2>{pagina.inleidingTitel}</h2>
             {pagina.inleiding.map((p) => <p key={p} style={{ marginTop: "1rem" }}>{p}</p>)}

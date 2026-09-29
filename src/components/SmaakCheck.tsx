@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { externLinks, formuleNamen, gelegenheden, site, stijlen } from "@/lib/content";
+import { offerteHref, formuleNamen, gelegenheden, site, stijlen } from "@/lib/content";
 
 export default function SmaakCheck() {
   const [stap, setStap] = useState(1);
@@ -30,9 +30,6 @@ export default function SmaakCheck() {
     gasten <= 30 ? "een intiem gezelschap, ideaal voor een verfijnd menu met veel aandacht voor elk bord"
       : gasten <= 120 ? "een mooi gezelschap waarbij we tempo en bediening nauwkeurig op elkaar afstemmen"
         : "een groot evenement waarbij we logistiek en timing mee uittekenen";
-
-  const query = new URLSearchParams({ gelegenheid, gasten: String(gasten), formule: formuleId });
-  if (isAnder && eigen.trim()) query.set("omschrijving", eigen.trim());
 
   return (
     <section className="sectie licht" id="smaakcheck">
@@ -119,7 +116,7 @@ export default function SmaakCheck() {
                 op maat uit.
               </p>
               <div className="knoppen">
-                <a className="btn btn-vol" href={`${externLinks.offerte}?${query.toString()}`}>
+                <a className="btn btn-vol" href={offerteHref}>
                   Vraag offerte aan met deze schets
                 </a>
                 <button type="button" className="btn btn-lijn"

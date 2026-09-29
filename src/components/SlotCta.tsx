@@ -1,4 +1,4 @@
-import { externLinks } from "@/lib/content";
+import { offerteHref } from "@/lib/content";
 
 type Knop = { label: string; href: string };
 
@@ -18,7 +18,7 @@ export default function SlotCta({
         <h2>{titel}</h2>
         <p className="lead">{lead}</p>
         <div className="knoppen">
-          <a className="btn btn-vol" href={ctaPrimair?.href ?? externLinks.offerte}>
+          <a className="btn btn-vol" href={ctaPrimair?.href ?? offerteHref}>
             {ctaPrimair?.label ?? "Vraag offerte aan"}
           </a>
           <a className="btn btn-lijn" href={ctaSecundair?.href ?? "#smaakcheck"}>
