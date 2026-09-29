@@ -16,11 +16,15 @@ Alles wat bewust nog leeg of op een placeholder staat. Vul aan vóór livegang.
 
 ## Beeldmateriaal nog aan te leveren
 - [x] **Hero.** Foto aangeleverd en verwerkt via `scripts/images.mjs` (bron in `assets-bron/hero.jpg`, niet gecommit). Let op: de aangeleverde foto is staand (1080×1350), geen liggend beeld ≥2000px zoals hier oorspronkelijk gevraagd — `object-fit:cover` vult de hero, maar snijdt op brede schermen meer van de zijkanten weg dan bij een liggende foto. Vervang later gerust door een liggend beeld voor een strakkere crop.
+- [ ] **Foto's bij de kaartjes op `/partners/` en `/locaties/`** — staan nu tekst-only (`src/components/LinkKaarten.tsx`). Aanleveren + component uitbreiden met een `beeld`-veld.
 - [ ] **Slot-CTA**, liggend sfeerbeeld (optioneel) → `src/components/SlotCta.tsx`.
 - [ ] **og-image** 1200 × 630 → `/public/images/og-home.jpg`.
 - [ ] **Favicons**: `favicon.ico`, `apple-touch-icon.png` (180), `icon-192.png`, `icon-512.png`, `site.webmanifest`.
 - [ ] **Logo-SVG** (`LOGO_Wit.svg`) ter vervanging van het tekstlogo "fa" in `Header.tsx` en `Footer.tsx`.
 - [ ] Video: `/public/video/event.mp4` staat klaar (720 px, 4,5 MB, H.264+AAC). Overweeg een WebM-variant erbij.
+
+## Design
+- [ ] **"Bezoek website"-knop op `/partners/` en `/locaties/` iets minder prominent maken** — staat nu als volwaardige `.btn-lijn` (zelfde gewicht als de echte CTA's elders op de site). Zie `src/components/LinkKaarten.tsx`.
 
 ## Techniek
 - [ ] **GA4 measurement ID** vervangen in `src/lib/content.ts` (`gaId`). Zolang de placeholder staat, laadt gtag.js bewust niet.
